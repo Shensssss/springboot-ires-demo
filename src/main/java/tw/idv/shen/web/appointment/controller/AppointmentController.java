@@ -28,7 +28,6 @@ import tw.idv.shen.web.appointment.dao.AppointmentDAO;
 import tw.idv.shen.web.appointment.entity.Appointment;
 import tw.idv.shen.web.appointment.service.AppointmentService;
 import tw.idv.shen.web.clinic.entity.Clinic;
-import tw.idv.shen.web.clinic.service.ClinicService;
 
 @Controller
 @RequestMapping("/appointment")
@@ -39,9 +38,6 @@ public class AppointmentController {
 
     @Autowired
     private AppointmentDAO appointmentDAO;
-
-    @Autowired
-    private ClinicService clinicService;
 
     @GetMapping("/apiToday")
     @ResponseBody

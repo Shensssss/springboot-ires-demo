@@ -22,8 +22,8 @@ public class FavoriteDaoImpl implements FavoriteDao {
 	@Override
 	public boolean existsByPatientIdClinicId(Integer patientId, Integer clinicId) {
 		String hql = "SELECT COUNT(f.favoritesId) FROM Favorite f WHERE f.patientId = :patientId AND f.clinicId = :clinicId";
-		Long count = (Long) session.createQuery(hql).setParameter("patientId", patientId)
-				.setParameter("clinicId", clinicId).uniqueResult();
+		Long count = (Long) session.createQuery(hql, Long.class).setParameter("patientId", patientId)
+				.setParameter("clinicId", clinicId).getSingleResult();
 
 		return count != null && count > 0;
 	}
@@ -31,7 +31,7 @@ public class FavoriteDaoImpl implements FavoriteDao {
 	@Override
 	public void save(Favorite favorite) {
 		// 這邊不用再產 ID，因為 Service 已經幫你設定好了 UUID
-		session.save(favorite);
+		session.merge(favorite);
 		session.flush(); // 可留著讓錯誤早點拋出
 	}
 
@@ -56,7 +56,7 @@ public class FavoriteDaoImpl implements FavoriteDao {
 	@Override
 	public boolean removeFavorite(Integer patientId, Integer clinicId) {
 	    String hql = "DELETE FROM Favorite f WHERE f.patientId = :patientId AND f.clinicId = :clinicId";
-	    int deleted = session.createQuery(hql)
+	    int deleted = session.createMutationQuery(hql)
 	        .setParameter("patientId", patientId)
 	        .setParameter("clinicId", clinicId)
 	        .executeUpdate();

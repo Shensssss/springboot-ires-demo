@@ -19,7 +19,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
 
 	@Override
 	public int insert(Appointment appointment) {
-		session.save(appointment);
+		session.merge(appointment);
 		return 1;
 	}
 
@@ -43,7 +43,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
 
 		original.setUpdateTime(new Timestamp(new Date().getTime()));
 
-		session.update(original);
+		session.merge(original);
 		return 1;
 	}
 
@@ -61,7 +61,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
 	public int deleteById(String id) {
 		Appointment appointment = session.get(Appointment.class, id);
 		if (appointment != null) {
-			session.delete(appointment);
+			session.remove(appointment);
 			return 1;
 		}
 		return 0;

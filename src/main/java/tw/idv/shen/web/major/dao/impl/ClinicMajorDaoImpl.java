@@ -41,14 +41,14 @@ public class ClinicMajorDaoImpl implements ClinicMajorDao{
 
 	@Override
 	public int update(ClinicMajor clinicMajor) {
-		session.update(clinicMajor);
+		session.merge(clinicMajor);
 		return 1;
 	}
 
 	@Override
 	public int deleteByClinicId(Integer clinicId) {
 		String hql = "DELETE FROM ClinicMajor WHERE clinic.clinicId = :clinicId";
-	    session.createQuery(hql)
+	    session.createMutationQuery(hql)
 	           .setParameter("clinicId", clinicId)
 	           .executeUpdate();
 	    return 1;

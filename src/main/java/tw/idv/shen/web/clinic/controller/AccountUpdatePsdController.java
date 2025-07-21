@@ -15,7 +15,7 @@ import tw.idv.shen.web.clinic.service.ClinicService;
 
 @Controller
 @RequestMapping("clinic/accountupdatepsd")
-public class accountupdatepsdController {
+public class AccountUpdatePsdController {
 
 	@Autowired
 	private ClinicService service;

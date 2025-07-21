@@ -41,7 +41,7 @@ public class clinicNotificationDAOImpl implements clinicNotificationDAO {
 
 		hql.append("WHERE n.appointment.appointmentId = :appointment_id");
 
-		return session.createQuery(hql.toString()).setParameter("appointment_id", appointment_id).executeUpdate();
+		return session.createMutationQuery(hql.toString()).setParameter("appointment_id", appointment_id).executeUpdate();
 
 	}
 }

@@ -34,7 +34,7 @@ public class ClinicInfoDaoImpl implements ClinicInfoDao {
 
 	@Override
 	public int update(Clinic editedClinic) {
-		session.update(editedClinic);
+		session.merge(editedClinic);
 	    return 1;
 	}
 

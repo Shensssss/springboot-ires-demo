@@ -55,6 +55,6 @@ public class EvaluationsDaoImpl implements EvaluationsDao {
 	}
 	
 	public void saveOrUpdate(Evaluations evaluations) {
-	    session.saveOrUpdate(evaluations);
+	    session.merge(evaluations);
 	}
 }

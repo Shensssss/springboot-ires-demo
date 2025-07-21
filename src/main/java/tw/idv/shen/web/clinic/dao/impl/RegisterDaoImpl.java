@@ -69,7 +69,7 @@ public class RegisterDaoImpl implements RegisterDao {
 	@Override
 	public int updatePassword(String account, String password) {
 		String hql = "UPDATE Clinic SET password = :password WHERE account = :account";
-		return session.createQuery(hql)
+		return session.createMutationQuery(hql)
 				.setParameter("account", account)
 				.setParameter("password", password)
 				.executeUpdate();

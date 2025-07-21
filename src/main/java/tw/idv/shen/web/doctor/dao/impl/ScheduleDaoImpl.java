@@ -22,14 +22,14 @@ public class ScheduleDaoImpl implements ScheduleDao{
 
 	@Override
 	public int deleteById(Integer scheduleId) {
-		Schedule schedule = session.load(Schedule.class, scheduleId);
+		Schedule schedule = session.getReference(Schedule.class, scheduleId);
 		session.remove(schedule);
 		return 1;
 	}
 
 	@Override
 	public int update(Schedule newSchedule) {
-		Schedule schedule = session.load(Schedule.class, newSchedule.getScheduleDoctorId());
+		Schedule schedule = session.getReference(Schedule.class, newSchedule.getScheduleDoctorId());
 		schedule.setOffDate(newSchedule.getOffDate());
 		schedule.setDayOfWeek(newSchedule.getDayOfWeek());
 		schedule.setTimePeriod(newSchedule.getTimePeriod());

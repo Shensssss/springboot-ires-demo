@@ -25,7 +25,7 @@ public class reservequeryDAOImpl implements reservequeryDAO {
 
 	@Override
 	public int deleteById(String id) {
-		Appointment appointment = session.load(Appointment.class, id);
+		Appointment appointment = session.getReference(Appointment.class, id);
 		session.remove(appointment);
 		return 1;
 	}

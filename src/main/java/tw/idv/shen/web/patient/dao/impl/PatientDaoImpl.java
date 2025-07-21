@@ -3,7 +3,7 @@ package tw.idv.shen.web.patient.dao.impl;
 import java.util.List;
 
 import org.hibernate.Session;
-import org.hibernate.query.Query;
+import org.hibernate.query.MutationQuery;
 import org.springframework.stereotype.Repository;
 
 import jakarta.persistence.PersistenceContext;
@@ -31,7 +31,7 @@ public class PatientDaoImpl implements PatientDao {
 
 	@Override
 	public int deleteById(Integer id) {
-		Patient patient = session.load(Patient.class, id);
+		Patient patient = session.getReference(Patient.class, id);
 		session.remove(patient);
 		return 1;
 	}
@@ -57,7 +57,7 @@ public class PatientDaoImpl implements PatientDao {
 			.append("update_time = :updateTime ")
 			.append("WHERE email = :email");
 
-		Query<?> query = session.createQuery(hql.toString());
+		MutationQuery query = session.createMutationQuery(hql.toString());
 		if (password != null && !password.isEmpty()) {
 			query.setParameter("password", password);
 		}
@@ -85,7 +85,7 @@ public class PatientDaoImpl implements PatientDao {
 	}
 
 	public void saveOrUpdate(Patient patient) {
-	    session.saveOrUpdate(patient);
+	    session.merge(patient);
 	}
 
 	@Override
@@ -184,7 +184,7 @@ public class PatientDaoImpl implements PatientDao {
 	@Override
 	public int updateNotes(Integer patientId, String newNotes) {
 		String hql = "UPDATE Patient p SET p.notes = :notes WHERE p.patientId = :patientId";
-	    session.createQuery(hql)
+	    session.createMutationQuery(hql)
 	           .setParameter("notes", newNotes)
 	           .setParameter("patientId", patientId)
 	           .executeUpdate();

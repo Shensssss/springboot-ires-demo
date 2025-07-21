@@ -22,14 +22,14 @@ public class DoctorDaoImpl implements DoctorDao {
 
 	@Override
 	public int deleteById(Integer doctorId) {
-		Doctor doctor = session.load(Doctor.class, doctorId);
+		Doctor doctor = session.getReference(Doctor.class, doctorId);
 		session.remove(doctor);
 		return 1;
 	}
 
 	@Override
 	public int update(Doctor newDoctor) {
-		Doctor doctor = session.load(Doctor.class, newDoctor.getDoctorId());
+		Doctor doctor = session.getReference(Doctor.class, newDoctor.getDoctorId());
 		doctor.setDoctorName(newDoctor.getDoctorName());
 		doctor.setEducation(newDoctor.getEducation());
 		doctor.setExperience(newDoctor.getExperience());

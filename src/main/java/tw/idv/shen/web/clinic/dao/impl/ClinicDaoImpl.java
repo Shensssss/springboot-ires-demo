@@ -26,7 +26,7 @@ public class ClinicDaoImpl implements ClinicDAO {
 
     @Override
     public int update(Clinic clinic) {
-        Clinic newclinic = session.load(Clinic.class, clinic.getClinicId());
+        Clinic newclinic = session.getReference(Clinic.class, clinic.getClinicId());
         newclinic.setClinicName(clinic.getClinicName());
         newclinic.setAccount(clinic.getAccount());
         newclinic.setPassword(clinic.getPassword());
@@ -38,13 +38,13 @@ public class ClinicDaoImpl implements ClinicDAO {
         newclinic.setRegistrationFee(clinic.getRegistrationFee());
         newclinic.setMemo(clinic.getMemo());
 
-        session.update(newclinic);
+        session.merge(newclinic);
         return 1;
     }
 
     @Override
     public int deleteById(Integer id) {
-        Clinic clinic = session.load(Clinic.class, id);
+        Clinic clinic = session.getReference(Clinic.class, id);
         session.remove(clinic);
         return 1;
     }
@@ -57,12 +57,12 @@ public class ClinicDaoImpl implements ClinicDAO {
     @Override
     public int updatePsd(Clinic newclinic) {
 
-        Clinic clinic = session.load(Clinic.class, newclinic.getClinicId());
+        Clinic clinic = session.getReference(Clinic.class, newclinic.getClinicId());
         final String newclinicPsd = newclinic.getPassword();
         if (newclinicPsd != null && !newclinicPsd.isEmpty()) {
             clinic.setPassword(newclinic.getPassword());
         }
-        session.update(clinic);
+        session.merge(clinic);
         return 1;
     }
 
