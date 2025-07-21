@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link href="static/css/css2.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link href="static/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="static/css/all.min.css" rel="stylesheet" />
+    <link href="static/css/select2.min.css" rel="stylesheet" />
+    <link
+      href="static/css/select2-bootstrap-5-theme.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <link href="static/css/ion.rangeSlider.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="static/css/common_style.css" />
+
+    <link href="static/css/hospital_style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="static/css/home_style.css" />
+
+    <title>搜尋診所預訂 | i-res</title>
+  </head>
+
+  <body class="home-st7">
+    <!--  滑鼠效果  -->
+    <div class="mouse-cursor cursor-outer"></div>
+    <div class="mouse-cursor cursor-inner"></div>
+
+    <!--  菜單頁面  -->
+    <div class="side_overlay"></div>
+    <div class="side_menu">
+      <div class="content">
+        <div class="row">
+          <div class="main_links">
+            <ul>
+              <li>
+                <a href="#" class="main_link">
+                  <i class="fas fa-home"></i> 主頁
+                </a>
+              </li>
+              <li>
+                <a href="#" class="main_link">
+                  <i class="fas fa-calendar-check"></i> 預約紀錄
+                </a>
+              </li>
+              <li>
+                <a href="#" class="main_link">
+                  <i class="fas fa-heart"></i> 我的收藏
+                </a>
+              </li>
+              <li>
+                <a href="#" class="main_link">
+                  <i class="fas fa-bell"></i> 通知消息
+                </a>
+              </li>
+              <li>
+                <a href="#" class="main_link">
+                  <i class="fas fa-user-cog"></i> 帳戶設定
+                </a>
+              </li>
+              <li>
+                <a href="#" class="main_link logout-link">
+                  <i class="fas fa-sign-out-alt"></i> 登出
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <span class="clss"> <i class="fas fa-times"></i> </span>
+    </div>
+    <!--  菜單結束  -->
+
+    <div id="scrollsmoother-container">
+      <!--  Appbar  -->
+      <nav class="navbar navbar-expand-lg navbar-light sub-font tc-navbar-st7">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">
+            <img src="static/img/logo.png" alt="" class="logo" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a href="#" id="user-location" class="nav-link">
+                  <i class="fas fa-map-marker-alt"></i> 獲取位置
+                </a>
+              </li>
+            </ul>
+            <ul class="navbar-nav">
+              <li id="login-link" class="nav-item">
+                <a class="nav-link login-dynamic-link" href="./login.html">
+                  Login <i class="fas fa-sign-in-alt"></i>
+                </a>
+              </li>
+              <li id="menu-link" class="nav-item menu-item d-none d-lg-block">
+                <a class="nav-link side_menu_btn" href="#"> Menu </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!--  AppBar結束  -->
+
+      <header class="tc-header-st7">
+        <div class="container">
+          <div class="booking-wrapper">
+            <div class="booking-form-container">
+              <form
+                class="booking-form clinicFilterForm"
+                action="javascript:void(0)"
+              >
+                <div class="booking-form-row">
+                  <div class="booking-form-item">
+                    <label>預約日期</label>
+                    <br />
+                    <input
+                      name="date"
+                      class="datepicker form-control datepicks_val"
+                      placeholder="mm / dd / yyyy"
+                      type="date"
+                    />
+                  </div>
+                  <span>|</span>
+                  <div class="booking-form-time">
+                    <label>預約時段</label>
+                    <br />
+                    <div class="parent" style="display: flex; gap: 10px">
+                      <div>
+                        <input
+                          class="timepicker_start"
+                          type="time"
+                          value="08:00"
+                        />
+                      </div>
+                      <div>
+                        <input
+                          class="timepicker_end"
+                          type="time"
+                          value="12:00"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <span>|</span>
+                  <div class="booking-form-item">
+                    <label>診所類別</label> <br />
+                    <div class="parent">
+                      <div class="custom-select">
+                        <select name="category" class="major-select">
+                          <option value="all" selected="">全部</option>
+                        </select>
+                      </div>
+                      <div class="custom-select-options">
+                        <ul>
+                          <li data-value="all">全部</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <span>|</span>
+                <div class="booking-form-row">
+                  <div class="booking-form-item">
+                    <label>
+                      <span class="distance-value">5</span> 公里
+                      <br />
+                      <div class="parent">
+                        <input
+                          type="range"
+                          class="modern-slider distance-range"
+                          name="distance"
+                          min="1"
+                          max="9"
+                          step="1"
+                          value="5"
+                        />
+                      </div>
+                    </label>
+                  </div>
+                </div>
+                <div class="booking-form-row full-width">
+                  <div class="booking-form-item full-width">
+                    <button type="submit" class="book-now-btn">立即搜尋</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="offcanvas-filters">
+        <a
+          href="#"
+          class="offcanvas-close align-items-center d-flex end-0 filters-close fs-21 justify-content-center position-absolute text-dark text-decoration-none top-0"
+          ><i class="fa-solid fa-xmark"></i
+        ></a>
+        <div class="sidebar-filters">
+          <div class="mb-4">
+            <div class="mb-3 d-flex justify-content-between align-items-end">
+              <h4 class="fs-16 fw-semibold mb-0">距離</h4>
+              <!-- <a
+                href="#"
+                class="fs-12 fw-medium reset text-decoration-none text-uppercase"
+                >重置</a
+              > -->
+            </div>
+            <div class="js-range-slider"></div>
+          </div>
+          <div class="mb-4">
+            <div class="mb-3 d-flex justify-content-between">
+              <h4 class="fs-16 fw-semibold mb-0">地區</h4>
+              <!-- <a
+                href="#"
+                class="fs-12 fw-medium reset text-decoration-none text-uppercase"
+                >重置</a
+              > -->
+            </div>
+            <div class="form-check mb-1">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="checkOne"
+              />
+              <label class="form-check-label" for="checkOne">
+                內湖區<span class="count ms-1">(15)</span>
+              </label>
+            </div>
+            <div class="form-check mb-1">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="checkTwo"
+                checked=""
+              />
+              <label class="form-check-label" for="checkTwo">
+                信義區<span class="count ms-1">(56)</span>
+              </label>
+            </div>
+            <div class="form-check mb-1">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="checkThree"
+              />
+              <label class="form-check-label" for="checkThree">
+                大安區<span class="count ms-1">(17)</span>
+              </label>
+            </div>
+            <div class="form-check mb-0">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="checkFour"
+              />
+              <label class="form-check-label" for="checkFour">
+                南港區<span class="count ms-1">(21)</span>
+              </label>
+            </div>
+          </div>
+          <div class="mb-4">
+            <div class="mb-3 d-flex justify-content-between align-items-end">
+              <h4 class="fs-16 fw-semibold mb-0">評價</h4>
+              <!-- <a
+                href="#"
+                class="fs-12 fw-medium reset text-decoration-none text-uppercase"
+                >重置</a
+              > -->
+            </div>
+            <div class="raty"></div>
+          </div>
+          <div class="mb-4">
+            <div class="mb-3 d-flex justify-content-between align-items-end">
+              <h4 class="fs-16 fw-semibold mb-0">診所專長</h4>
+              <!-- <a
+                href="#"
+                class="fs-12 fw-medium reset text-decoration-none text-uppercase"
+                >重置</a
+              > -->
+            </div>
+            <select class="form-control select2" multiple="multiple">
+              <option value="all" selected="">全部</option>
+              <option value="pec">小兒科</option>
+              <option value="dc">牙科</option>
+              <option value="oc">眼科</option>
+              <option value="ob">婦產科</option>
+              <option value="dermc">皮膚科</option>
+              <option value="ent">耳鼻喉科</option>
+              <option value="psychc">身心科</option>
+              <option value="tcm">中醫</option>
+              <option value="nutc">營養科</option>
+              <option value="ptc">物理治療</option>
+            </select>
+          </div>
+          <div>
+            <div class="mb-3 d-flex justify-content-between align-items-end">
+              <h4 class="fs-16 fw-semibold mb-0">排序</h4>
+              <!-- <a
+                href="#"
+                class="fs-12 fw-medium reset text-decoration-none text-uppercase"
+                >重置</a
+              > -->
+            </div>
+            <div class="form-check mb-1">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="flexRadioDefault"
+                id="sortRadioOne"
+                checked=""
+              />
+              <label class="form-check-label" for="sortRadioOne">
+                受歡迎程度
+              </label>
+            </div>
+            <div class="form-check mb-1">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="flexRadioDefault"
+                id="sortRadioTwo"
+              />
+              <label class="form-check-label" for="sortRadioTwo">
+                相關性（預設）
+              </label>
+            </div>
+            <div class="form-check mb-1">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="flexRadioDefault"
+                id="sortRadioThree"
+              />
+              <label class="form-check-label" for="sortRadioThree">
+                距離: 近到遠
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="py-5">
+        <div class="container py-3">
+          <div class="row g-xl-5">
+            <aside
+              class="col-md-12 col-lg-3 filters-col sidebar d-none d-lg-block border-end"
+            >
+              <div class="sidebar-filters">
+                <div class="mb-4">
+                  <div
+                    class="mb-3 d-flex justify-content-between align-items-end"
+                  >
+                    <h4 class="fs-16 fw-semibold mb-0">距離</h4>
+                    <!-- <a
+                      href="#"
+                      class="fs-12 fw-medium reset text-decoration-none text-uppercase"
+                      >重置</a
+                    > -->
+                  </div>
+                  <div class="js-range-slider"></div>
+                </div>
+                <div class="mb-4">
+                  <div class="mb-3 d-flex justify-content-between">
+                    <h4 class="fs-16 fw-semibold mb-0">地區</h4>
+                    <!-- <a
+                      href="#"
+                      class="fs-12 fw-medium reset text-decoration-none text-uppercase"
+                      >重置</a
+                    > -->
+                  </div>
+                  <div id="address_town"></div>
+                </div>
+                <div class="mb-4">
+                  <div
+                    class="mb-3 d-flex justify-content-between align-items-end"
+                  >
+                    <h4 class="fs-16 fw-semibold mb-0">評價</h4>
+                    <!-- <a
+                      href="#"
+                      class="fs-12 fw-medium reset text-decoration-none text-uppercase"
+                      >重置</a
+                    > -->
+                  </div>
+                  <div class="ratys"></div>
+                </div>
+                <div class="mb-4">
+                  <div
+                    class="mb-3 d-flex justify-content-between align-items-end"
+                  >
+                    <h4 class="fs-16 fw-semibold mb-0">診所專長</h4>
+                    <!-- <a
+                      href="#"
+                      class="fs-12 fw-medium reset text-decoration-none text-uppercase"
+                      >重置</a
+                    > -->
+                  </div>
+                  <select
+                    class="form-control select2"
+                    multiple="multiple"
+                    id="hospital_major"
+                  ></select>
+                </div>
+                <!-- <div>
+                  <div
+                    class="mb-3 d-flex justify-content-between align-items-end"
+                  >
+                    <h4 class="fs-16 fw-semibold mb-0">排序</h4>
+                    <a
+                      href="#"
+                      class="fs-12 fw-medium reset text-decoration-none text-uppercase"
+                      >重置</a
+                    >
+                  </div>
+                  <div class="form-check mb-1">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="flexRadioDefault"
+                      id="sortRadioOne"
+                      checked=""
+                    />
+                    <label class="form-check-label" for="sortRadioOne">
+                      受歡迎程度
+                    </label>
+                  </div>
+                  <div class="form-check mb-1">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="flexRadioDefault"
+                      id="sortRadioTwo"
+                    />
+                    <label class="form-check-label" for="sortRadioTwo">
+                      相關性（預設）
+                    </label>
+                  </div>
+                  <div class="form-check mb-1">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="flexRadioDefault"
+                      id="sortRadioThree"
+                    />
+                    <label class="form-check-label" for="sortRadioThree">
+                      距離: 近到遠
+                    </label>
+                  </div>
+                </div> -->
+                <!-- 新增套用篩選條件按鈕 -->
+                <div class="mt-3">
+                  <button
+                    type="button"
+                    id="sidebar-apply-filter-btn"
+                    class="btn btn-primary w-100"
+                  >
+                    套用篩選條件
+                  </button>
+                </div>
+              </div>
+            </aside>
+            <div class="col-md-12 col-lg-9 content">
+              <div id="clinic-list"></div>
+              <!-- <nav
+                class="align-items-center border-top d-flex flex-wrap justify-content-center justify-content-sm-between pagination mt-5"
+              >
+                <ul class="list-unstyled m-0 pages mt-3">
+                  <li class="active"><a href="#">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">4</a></li>
+                  <li>...</li>
+                  <li><a href="#">12</a></li>
+                </ul>
+                <div class="ms-3 ms-sm-0 mt-3">
+                  <a class="btn btn-primary btn-sm" href="#"
+                    >下一頁<i class="fa-solid fa-arrow-right ms-2"></i
+                  ></a>
+                </div>
+              </nav> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="static/js/jquery-3.7.1.min.js"></script>
+    <script src="static/js/wow.min.js"></script>
+    <!-- <script src="static/js/bootstrap-datepicker.js"></script> -->
+    <script src="static/js/select2.min.js"></script>
+    <script src="static/js/theia-sticky-sidebar.min.js"></script>
+    <script src="static/js/owl.carousel.min.js"></script>
+    <script src="static/js/ion.rangeSlider.min.js"></script>
+    <script src="static/js/raty.min.js"></script>
+    <script src="static/js/slick.min.js"></script>
+    <script src="static/js/jquery.magnific-popup.min.js"></script>
+    <script src="static/js/jquery.counterup.min.js"></script>
+    <script src="static/js/aos.min.js"></script>
+    <script src="static/js/custom.js"></script>
+    <script src="static/js/hero-input-dropdown.js"></script>
+
+    <script src="static/js/common_js.js"></script>
+
+    <!-- === Gsap === -->
+    <script src="static/js/gsap.min.js"></script>
+    <script src="static/js/ScrollSmoother.min.js"></script>
+    <script src="static/js/ScrollTrigger.min.js"></script>
+    <script src="static/js/SplitText.min.js"></script>
+    <script src="static/js/gps.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="static/js/gps.js"></script>
+    <script src="static/js/hospital.js"></script>
+  </body>
+</html>

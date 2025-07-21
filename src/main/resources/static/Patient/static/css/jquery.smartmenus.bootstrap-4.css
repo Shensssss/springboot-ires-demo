@@ -1,0 +1,28 @@
+/*
+ You probably do not need to edit this at all.
+
+ Add some SmartMenus required styles not covered in Bootstrap 4's default CSS.
+ These are theme independent and should work with any Bootstrap 4 theme mod.
+*/
+
+
+/* Carets in collapsible mode (make them look like +/- buttons) */
+/* make sure there's room for the carets */
+/* keep the carets properly positioned */
+
+
+/* Nav carets in expanded mode */
+/* point the arrows up for .fixed-bottom navbars */
+
+
+/* Dropdown carets in expanded mode */
+/* make sure there's room for the carets */
+
+
+/* Scrolling arrows for tall menus */
+
+
+/* Add some spacing for 2+ level sub menus in collapsible mode */
+
+
+/* Fix SmartMenus sub menus auto width (subMenusMinWidth/subMenusMaxWidth options) */

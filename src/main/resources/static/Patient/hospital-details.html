@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="static/css/css2.css" />
+    <link rel="stylesheet" href="static/css/aos.min.css" />
+    <link rel="stylesheet" href="static/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="static/css/jquery.smartmenus.bootstrap-4.css"
+    />
+    <link rel="stylesheet" href="static/css/all.min.css" />
+    <link rel="stylesheet" href="static/css/flaticon-icon.css" />
+    <link rel="stylesheet" href="static/css/themify-icons.css" />
+    <link rel="stylesheet" href="static/css/bootstrap-datepicker.min.css" />
+    <link rel="stylesheet" href="static/css/select2.min.css" />
+    <link
+      rel="stylesheet"
+      href="static/css/select2-bootstrap-5-theme.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <link rel="stylesheet" href="static/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="static/css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="static/css/ion.rangeSlider.min.css" />
+    <link rel="stylesheet" href="static/css/raty.min.css" />
+    <link rel="stylesheet" href="static/css/slick.min.css" />
+    <link rel="stylesheet" href="static/css/slick-theme.min.css" />
+    <link rel="stylesheet" href="static/css/magnific-popup.min.css" />
+    <link rel="stylesheet" href="static/css/hospital_detail_style.css" />
+    <link rel="stylesheet" href="static/css/common_style.css" />
+    <link rel="stylesheet" href="static/css/home_style.css" />
+    <title>診所詳情 | i-res</title>
+  </head>
+
+  <body class="home-st7">
+    <!--  滑鼠效果  -->
+    <div class="mouse-cursor cursor-outer"></div>
+    <div class="mouse-cursor cursor-inner"></div>
+
+    <!--  菜單頁面  -->
+    <div class="side_overlay"></div>
+    <div class="side_menu">
+      <div class="content">
+        <div class="row">
+          <div class="main_links">
+            <ul>
+              <li>
+                <a href="#" class="main_link">
+                  <i class="fas fa-home"></i> 主頁
+                </a>
+              </li>
+              <li>
+                <a href="#" class="main_link">
+                  <i class="fas fa-calendar-check"></i> 預約紀錄
+                </a>
+              </li>
+              <li>
+                <a href="#" class="main_link">
+                  <i class="fas fa-heart"></i> 我的收藏
+                </a>
+              </li>
+              <li>
+                <a href="#" class="main_link">
+                  <i class="fas fa-bell"></i> 通知消息
+                </a>
+              </li>
+              <li>
+                <a href="#" class="main_link">
+                  <i class="fas fa-user-cog"></i> 帳戶設定
+                </a>
+              </li>
+              <li>
+                <a href="#" class="main_link logout-link">
+                  <i class="fas fa-sign-out-alt"></i> 登出
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <span class="clss"> <i class="fas fa-times"></i> </span>
+    </div>
+    <!--  菜單結束  -->
+    <div id="scrollsmoother-container">
+      <!--  Appbar  -->
+      <nav class="navbar navbar-expand-lg navbar-light sub-font tc-navbar-st7">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">
+            <img src="static/img/logo.png" alt="" class="logo" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a href="#" id="user-location" class="nav-link">
+                  <i class="fas fa-map-marker-alt"></i> 獲取位置
+                </a>
+              </li>
+            </ul>
+            <ul class="navbar-nav">
+              <li id="login-link" class="nav-item">
+                <a class="nav-link login-dynamic-link" href="#">
+                  Login <i class="fas fa-sign-in-alt"></i>
+                </a>
+              </li>
+              <li id="menu-link" class="nav-item menu-item d-none d-lg-block">
+                <a class="nav-link side_menu_btn" href="#"> Menu </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!--  AppBar結束  -->
+      <div id="hospital-details-page"></div>
+      <div class="pb-5">
+        <div class="container pb-3">
+          <div class="row">
+            <div class="col-md-10 offset-md-1">
+              <div class="section-header text-center mb-5">
+                <h2
+                  class="fw-semibold mb-2 section-header__title text-capitalize"
+                >
+                  全身
+                  <span class="underline position-relative text-primary"
+                    >健康</span
+                  >
+                  檢查
+                </h2>
+                <div class="sub-title fs-16">
+                  我們的服務可以讓你無時無刻預約，別忘了在社群標註我們 👉
+                  @ires！
+                  <br class="d-none d-lg-block" />
+                  在 Instagram 上標註，有機會被官方轉發！
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer></footer>
+    </div>
+
+    <script src="static/js/jquery-3.7.1.min.js"></script>
+    <script src="static/js/bootstrap.bundle.min.js"></script>
+    <script src="static/js/jquery.smartmenus.min.js"></script>
+    <script src="static/js/jquery.smartmenus.bootstrap-4.min.js"></script>
+    <script src="static/js/bootstrap-datepicker.min.js"></script>
+    <script src="static/js/select2.min.js"></script>
+    <script src="static/js/ResizeSensor.min.js"></script>
+    <script src="static/js/theia-sticky-sidebar.min.js"></script>
+    <script src="static/js/owl.carousel.min.js"></script>
+    <script src="static/js/hideShowPassword.min.js"></script>
+    <script src="static/js/ion.rangeSlider.min.js"></script>
+    <script src="static/js/raty.min.js"></script>
+    <script src="static/js/wow.min.js"></script>
+    <script src="static/js/slick.min.js"></script>
+    <script src="static/js/jquery.magnific-popup.min.js"></script>
+    <script src="static/js/vidbg.min.js"></script>
+    <script src="static/js/waypoints.min.js"></script>
+    <script src="static/js/jquery.counterup.min.js"></script>
+    <script src="static/js/typed.min.js"></script>
+    <script src="static/js/aos.min.js"></script>
+    <script src="static/js/read-more.js"></script>
+    <script src="static/js/custom.js"></script>
+    <script src="static/js/js.js"></script>
+    <script src="static/js/common_js.js"></script>
+
+    <script>
+      window.init = function () {
+        if (typeof init === "function") init();
+      };
+    </script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgRkDJeajEe4nbQgupP7yvSBayWSoIQAg&callback=init&libraries=geometry"
+      async
+      defer
+    ></script>
+
+    <script src="static/js/hospital_details.js"></script>
+    <!-- <script src="static/js/map.active.js"></script> -->
+
+    <!-- === Gsap === -->
+    <script src="static/js/gsap.min.js"></script>
+    <script src="static/js/ScrollSmoother.min.js"></script>
+    <script src="static/js/ScrollTrigger.min.js"></script>
+    <script src="static/js/SplitText.min.js"></script>
+    <script src="static/js/gps.js"></script>
+  </body>
+</html>

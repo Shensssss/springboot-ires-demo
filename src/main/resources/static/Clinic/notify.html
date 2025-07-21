@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>I-RES</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <!-- Fonts  -->
+    <link rel="stylesheet" href="static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/simple-line-icons.css">
+    <!-- CSS Animate -->
+    <link rel="stylesheet" href="static/css/animate.css">
+    <!-- Daterange Picker -->
+    <link rel="stylesheet" href="static/css/daterangepicker-bs3.css">
+    <!-- Switchery -->
+    <link rel="stylesheet" href="static/css/switchery.min.css">
+    <!-- Custom styles for this theme -->
+    <link rel="stylesheet" href="static/css/main.css">
+    <!-- bell -->
+    <link rel="stylesheet" href="static/css/bell.css">
+    <!-- Feature detection -->
+    <script src="static/js/modernizr-2.6.2.min.js"></script>
+
+    <style>
+        /* body {
+            max-width: 960px;
+            margin: 2rem auto;
+            font-family: "Segoe UI", sans-serif;
+            padding: 1rem;
+        } */
+
+        h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background-color: #f2f2f2;
+        }
+
+        th,
+        td {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        .table-scroll {
+            max-height: 500px;
+            overflow-y: auto;
+            margin-bottom: 2rem;
+        }
+
+        /*
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            border-top: 1px solid #ccc;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            z-index: 1000;
+        }
+        */
+
+        .bottom-bar {
+            position: relative;
+            width: 100%;
+            background-color: white;
+            border-top: 1px solid #ccc;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            /* 加這行讓它有距離 */
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #e0e0e0;
+        }
+
+        .btn-green {
+            background-color: #28a745;
+            color: white;
+            border: none;
+        }
+
+        .btn-green:hover {
+            background-color: #218838;
+        }
+
+        .btn-dark {
+            background-color: #333;
+            color: white;
+            border: none;
+        }
+
+        .btn-dark:hover {
+            background-color: #111;
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .input-group input {
+            width: 60px;
+            padding: 0.25rem;
+        }
+
+        #pagination {
+            display: flex;
+            gap: 0.25rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        #pagination button {
+            padding: 0.3rem 0.6rem;
+        }
+
+        .active {
+            font-weight: bold;
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="main-wrapper" class="theme-default">
+        <header id="header">
+            <!--logo start-->
+            <div class="brand">
+                <a href="roomInfo.html" class="logo" style="position: fixed; top: -3px; left: 10px; font-size: 24px;">
+                    <span id="clinicName"></span></a>
+            </div>
+            <img src="static/picture/ires.png"
+                style=" position: fixed; margin-top: 0.4cm; width:3cm; height:auto; left: 280px;">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+            <div class="notification-wrapper">
+                <a href="clinicNotification.html">
+                    <div class="notification-icon" id="bell">
+                        <i class="fas fa-bell" style="position: fixed; top: 20px; right: 20px; font-size: 24px;"></i>
+                        <span class="badge"></span>
+                    </div>
+                </a>
+                <!-- <div class="notification-dropdown" id="dropdown">
+                    <p>📬 您有新通知</p>
+                    <ul>
+                        <li>✅ 報到通知</li>
+                        <li>💬 評價通知</li>
+                        <li>⚠️ 系統通知</li>
+                    </ul>                    
+                </div> -->
+            </div>
+            <!--logo end-->
+            <ul class="nav navbar-nav navbar-left">
+                <li class="toggle-navigation toggle-left">
+                    <button class="sidebar-toggle" id="toggle-left" style="width: 10px;">
+                        <i class="fa fa-bars" style="position: fixed; top: 25px; left: 250px;"></i>
+                    </button>
+                </li>
+            </ul>
+        </header>
+        <!--sidebar left start-->
+        <aside class="sidebar sidebar-left">
+            <nav>
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="nav-dropdown">
+                        <a href="#" title="Appointment">
+                            <i class="fa  fa-fw fa-cogs"></i> 預約管理
+                        </a>
+                        <ul class="nav-sub">
+                            <li>
+                                <a href="reservequery.html" title="reservequery">
+                                    預約查詢
+                                </a>
+                            </li>
+                            <li>
+                                <a href="appointment.html" title="Appointment">
+                                    新增預約
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="patientInfo.html" title="PatientInfo">
+                            <i class="fa  fa-fw fa-edit"></i> 病患資料
+                        </a>
+                    </li>
+                    <li class="nav-dropdown hidden">
+                        <a href="callRoom.html" title="callRoom">
+                            <i class="fa  fa-fw fa-th-list"></i> 診間叫號
+                        </a>
+                    </li>
+                    <li class="nav-dropdown hidden">
+                        <a href="#" title="FeedbackManagement">
+                            <i class="fa fa-fw fa-bar-chart-o"></i> 評價管理
+                        </a>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="#" title="AccountManagement">
+                            <i class="fa  fa-fw fa-folder-open"></i> 帳戶管理
+                        </a>
+                        <ul class="nav-sub">
+                            <li>
+                                <a href="clinicInfo.html" title="ClinicInfo">
+                                    診所資料
+                                </a>
+                            </li>
+                            <li>
+                                <a href="doctorInfo.html" title="DocInfo">
+                                    醫生資料
+                                </a>
+                            </li>
+                            <li hidden>
+                                <a href="#" title="Feedback">
+                                    意見回饋
+                                </a>
+                            </li>
+                            <li>
+                                <a href="accountupdatepsd.html" title="Password">
+                                    修改密碼
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="#" title="Logout">
+                            <i class="fa  fa-fw fa-file-text"></i> 登出
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <!--main content start-->
+        <section class="main-content-wrapper">
+            <div class="pageheader">
+                <h1>發送通知</h1>
+            </div>
+
+            <section id="main-content" class="animated fadeInUp">
+                <div class="table-scroll">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="selectAll" onclick="toggleSelectAll()"></th>
+                                <th>#</th>
+                                <th>看診日期</th>
+                                <!--                                <th>診間</th>-->
+                                <th>號碼</th>
+                                <th>姓名</th>
+                                <th>醫師</th>
+                                <th>結果</th>
+                            </tr>
+                        </thead>
+                        <tbody id="notifyTableBody"></tbody>
+                    </table>
+                </div>
+
+                <div class="bottom-bar">
+                    <div class="input-group">
+                        <button class="btn" onclick="history.back()">← 上一頁</button>
+                        <button class="btn btn-green" onclick="sendNotifications()">📨 發送通知</button>
+                    </div>
+
+                    <div id="pagination"></div>
+
+                    <div class="input-group">
+                        <label for="itemsPerPageInput">每頁顯示</label>
+                        <input type="number" id="itemsPerPageInput" value="10" min="1" onchange="updatePageSize()">
+                        <span>筆</span>
+                    </div>
+
+                    <!-- <button class="btn btn-dark" onclick="scrollToTop()">↑ 回到最上</button> -->
+                </div>
+            </section>
+        </section>
+    </section>
+    <!--/Config demo-->
+    <!--Global JS-->
+    <script src="static/js/jquery-1.11.1.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/jquery.navgoco.min.js"></script>
+    <script src="static/js/pace.min.js"></script>
+    <script src="static/js/jquery.fullscreen-min.js"></script>
+    <script src="static/js/app.js"></script>
+    <!--Page Level JS-->
+    <script src="static/js/jquery.countTo.js"></script>
+    <script src="static/js/skycons.js"></script>
+    <script src="static/js/moment.min.js"></script>
+    <script src="static/js/daterangepicker.js"></script>
+    <!-- ChartJS  -->
+    <script src="static/js/Chart.min.js"></script>
+    <!-- Morris  -->
+    <script src="static/js/morris.min.js"></script>
+    <!--<script src="static/js/raphael.2.1.0.min.js"></script>-->
+    <!-- Vector Map  -->
+    <script src="static/js/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="static/js/jquery-jvectormap-world-mill-en.js"></script>
+    <!-- Gauge  -->
+    <!--<script src="static/js/gauge.min.js"></script>
+    <script src="static/js/gauge-demo.js"></script>-->
+    <!-- Calendar  -->
+    <script src="static/js/clndr.js"></script>
+    <script src="static/js/clndr-demo.js"></script>
+    <script src="static/js/underscore-min.js"></script>
+    <!-- Switch -->
+    <script src="static/js/switchery.min.js"></script>
+    <!--Load these page level functions-->
+    <script src="static/js/bell.js"></script>
+    <!--<script>
+    $(document).ready(function() {
+        app.dateRangePicker();
+        app.chartJs();
+        app.weather();
+        app.spinStart();
+        app.spinStop();
+    });
+    </script>-->
+
+    <script>
+        let notifyData = [];
+        let currentPage = 1;
+        let itemsPerPage = 10;
+
+        function loadNotifyData() {
+            const data = JSON.parse(localStorage.getItem("notifyPatients") || "[]");
+            notifyData = data;
+            currentPage = 1;
+            renderNotifyTable();
+        }
+
+        function updatePageSize() {
+            const input = document.getElementById("itemsPerPageInput");
+            itemsPerPage = parseInt(input.value) || 10;
+            currentPage = 1;
+            renderNotifyTable();
+        }
+
+        function changePage(page) {
+            const totalPages = Math.ceil(notifyData.length / itemsPerPage);
+            if (page < 1 || page > totalPages) return;
+            currentPage = page;
+            renderNotifyTable();
+        }
+
+        function renderPagination(totalPages) {
+            const container = document.getElementById("pagination");
+            container.innerHTML = "";
+
+            const createBtn = (label, page, disabled = false, active = false) => {
+                const btn = document.createElement("button");
+                btn.className = "btn";
+                if (active) btn.classList.add("active");
+                if (disabled) btn.disabled = true;
+                btn.innerText = label;
+                btn.onclick = () => changePage(page);
+                return btn;
+            };
+
+            container.appendChild(createBtn("<<", 1, currentPage === 1));
+            container.appendChild(createBtn("<", currentPage - 1, currentPage === 1));
+
+            const maxPageButtons = 5;
+            let startPage = Math.max(1, currentPage - 2);
+            let endPage = Math.min(totalPages, startPage + maxPageButtons - 1);
+            if (endPage - startPage < maxPageButtons - 1) {
+                startPage = Math.max(1, endPage - maxPageButtons + 1);
+            }
+
+            for (let i = startPage; i <= endPage; i++) {
+                container.appendChild(createBtn(i, i, false, i === currentPage));
+            }
+
+            if (endPage < totalPages) {
+                container.appendChild(document.createTextNode(" ... "));
+                container.appendChild(createBtn(totalPages, totalPages));
+            }
+
+            container.appendChild(createBtn(">", currentPage + 1, currentPage === totalPages));
+            container.appendChild(createBtn(">>", totalPages, currentPage === totalPages));
+        }
+
+        function renderNotifyTable() {
+            const tbody = document.getElementById("notifyTableBody");
+            const start = (currentPage - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const pageData = notifyData.slice(start, end);
+
+            if (notifyData.length === 0) {
+                tbody.innerHTML = "<tr><td colspan='6' style='color:red;'>⚠️ 無未報到病人資料</td></tr>";
+                return;
+            }
+
+            tbody.innerHTML = pageData.map((p, i) => {
+                let statusColor = "";
+
+                if (p.status === "已發送過通知") {
+                    statusColor = "color:red;font-weight:bold;";
+                } else if (p.status === "通知已發送") {
+                    statusColor = "color:green;font-weight:bold;";
+                }
+
+                const serialNumber = (currentPage - 1) * itemsPerPage + i + 1;
+
+                return `
+                    <tr>
+                        <td><input type="checkbox" class="row-check"></td>
+                        <td>${serialNumber}</td>
+                        <td>${p.date}</td>
+            <!--            <td>${p.room}</td>-->
+                        <td>${p.number}</td>
+                        <td>${p.name}</td>
+                        <td>${p.doctor}</td>
+                        <td style="${statusColor}">${p.status ?? ""}</td>
+                    </tr>
+                `;
+            }).join("");
+
+            const selectAllBox = document.getElementById("selectAll");
+            selectAllBox.checked = false;
+
+            const totalPages = Math.ceil(notifyData.length / itemsPerPage);
+            renderPagination(totalPages);
+        }
+
+        function toggleSelectAll() {
+            const selectAllBox = document.getElementById("selectAll");
+            const allChecks = document.querySelectorAll(".row-check");
+            allChecks.forEach(chk => chk.checked = selectAllBox.checked);
+        }
+
+        function sendNotifications() {
+            const selectedRows = document.querySelectorAll(".row-check:checked");
+            if (selectedRows.length === 0) {
+                alert("請先選擇要通知的病人");
+                return;
+            }
+
+            const data = JSON.parse(localStorage.getItem("notifyPatients") || "[]");
+            const payload = [];
+
+            selectedRows.forEach((checkbox) => {
+                const rowIndex = Array.from(document.querySelectorAll(".row-check")).indexOf(checkbox);
+                const patient = data[rowIndex];
+
+                payload.push({
+                    patientId: patient.patientId,
+                    appointmentId: patient.appointmentId,
+                    message: "您於今日有預約，請於看診時段內至診所報到",
+                    notificationType: "預約報到通知"
+                });
+            });
+
+            fetch("/ires-system/notification/create", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload) // 傳送 JSON 陣列
+            })
+                .then(response => response.json())
+                .then(result => {
+                    console.log("通知結果：", result);
+
+                    const checkboxes = document.querySelectorAll(".row-check:checked");
+                    const data = JSON.parse(localStorage.getItem("notifyPatients") || "[]");
+
+                    checkboxes.forEach((checkbox, i) => {
+                        const rowIndex = Array.from(document.querySelectorAll(".row-check")).indexOf(checkbox);
+                        if (data[rowIndex]) {
+                            data[rowIndex].status = result[i];
+                        }
+                    });
+
+                    notifyData = data;
+
+                    renderNotifyTable();
+                    alert(`已發送 ${selectedRows.length} 筆通知！`);
+                })
+                .catch(error => {
+                    console.error("發送通知時發生錯誤", error);
+                    alert("發送失敗，請查看 console log");
+                });
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        //window.onload = loadNotifyData;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            loadNotifyData();
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const name = sessionStorage.getItem("clinicName");
+            if (name) {
+                document.getElementById("clinicName").textContent = name;
+            } else {
+                // 未登入或資料遺失，導回登入頁
+                alert("尚未登入");
+                location.href = "/ires-system/Clinic/login.html";
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // 處理登出點擊
+            const logoutLink = document.querySelector('a[title="Logout"]');
+            if (logoutLink) {
+                logoutLink.addEventListener("click", function (e) {
+                    e.preventDefault();
+
+                    // 彈窗確認
+                    if (confirm("確定要登出嗎？")) {
+                        // 發送登出請求
+                        fetch('/ires-system/clinic/logout', {
+                            method: 'DELETE',
+                            credentials: 'include' // 確保 session cookie 被送出
+                        })
+                            .then(response => {
+                                if (response.ok) {
+                                    // 跳轉回登入頁
+                                    sessionStorage.clear();
+                                    window.location.href = '/ires-system/Clinic/login.html';
+                                } else {
+                                    alert("登出失敗，請稍後再試");
+                                }
+                            })
+                            .catch(err => {
+                                console.error("登出錯誤：", err);
+                                alert("無法連線到伺服器");
+                            });
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

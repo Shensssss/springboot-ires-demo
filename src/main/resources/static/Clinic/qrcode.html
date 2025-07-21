@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>報到 QRCode</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+    <style>
+        body {
+            text-align: center;
+            font-family: "Segoe UI", sans-serif;
+            padding: 2rem;
+        }
+        canvas {
+            margin-top: 20px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #qrcodeText {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h2>報到 QR Code</h2>
+    <div id="qrcodeContainer"></div>
+    <p id="qrcodeText"></p>
+    <div>
+        <button onclick="downloadQRCode()">下載</button>
+        <button onclick="window.print()">列印</button>
+    </div>
+
+    <script>
+        const qrValue = localStorage.getItem("qrValue");
+        if (!qrValue) {
+            document.body.innerHTML = "<p>無有效資料</p>";
+        } else {
+            // document.getElementById("qrcodeText").innerText = qrValue;
+            const container = document.getElementById("qrcodeContainer");
+            const canvas = document.createElement("canvas");
+            container.appendChild(canvas);
+
+            QRCode.toCanvas(canvas, qrValue, {
+                width: 300,
+                margin: 2,
+                color: {
+                    dark: "#000000",
+                    light: "#ffffff"
+                }
+            }, function (error) {
+                if (error) console.error("QRCode 產生失敗：", error);
+            });
+        }
+
+        function downloadQRCode() {
+            const canvas = document.querySelector("canvas");
+            const link = document.createElement('a');
+            link.download = 'qrcode.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+    </script>
+</body>
+</html>

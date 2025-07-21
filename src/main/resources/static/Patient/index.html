@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta
+      name="keywords"
+      content="HTML5 Template Artech Multi-Purpose themeforest"
+    />
+    <meta name="description" content="Artech - Multi-Purpose HTML5 Template" />
+    <meta name="author" content="" />
+    <title>i-res | 即時預約・智能回應・追蹤修復</title>
+
+    <link rel="icon" href="static/img/favi.png" title="Favicon" sizes="32x32" />
+    <link rel="stylesheet" href="static/css/bootstrap.min.css" />
+
+    <!-- 語言 -->
+    <link href="static/css/css.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="static/css/all.min.css" />
+    <link rel="stylesheet" href="static/css/animate.css" />
+    <link rel="stylesheet" href="static/css/jquery.fancybox.css" />
+    <link rel="stylesheet" href="static/css/lity.css" />
+    <link rel="stylesheet" href="static/css/swiper8.min.css" />
+    <link rel="stylesheet" href="static/css/common_style.css" />
+
+    <!-- home style -->
+    <link rel="stylesheet" href="static/css/home_style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+
+    <link rel="stylesheet" href="static/css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="static/css/room-suites-single-room.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+
+  <body class="home-st7">
+    <!--  滑鼠效果  -->
+    <div class="mouse-cursor cursor-outer"></div>
+    <div class="mouse-cursor cursor-inner"></div>
+
+    <!-- ====== Loading ====== -->
+
+    <div class="loader-wrap">
+      <svg viewbox="0 0 1000 1000" preserveaspectratio="none">
+        <path id="svg" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
+      </svg>
+
+      <div class="loader-wrap-heading">
+        <div class="load-text">
+          <span>L</span>
+          <span>o</span>
+          <span>a</span>
+          <span>d</span>
+          <span>i</span>
+          <span>n</span>
+          <span>g</span>
+        </div>
+      </div>
+    </div>
+
+    <!--  菜單頁面  -->
+    <div class="side_overlay"></div>
+    <div class="side_menu">
+      <div class="content">
+        <div class="row">
+          <div class="main_links">
+            <ul>
+              <li>
+                <a href="#" class="main_link">
+                  <i class="fas fa-home"></i> 主頁
+                </a>
+              </li>
+              <li>
+                <a href="#" class="main_link">
+                  <i class="fas fa-calendar-check"></i> 預約紀錄
+                </a>
+              </li>
+              <li>
+                <a href="#" class="main_link">
+                  <i class="fas fa-heart"></i> 我的收藏
+                </a>
+              </li>
+              <li>
+                <a href="#" class="main_link">
+                  <i class="fas fa-bell"></i> 通知消息
+                </a>
+              </li>
+              <li>
+                <a href="#" class="main_link">
+                  <i class="fas fa-user-cog"></i> 帳戶設定
+                </a>
+              </li>
+              <li>
+                <a href="#" class="main_link logout-link">
+                  <i class="fas fa-sign-out-alt"></i> 登出
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <span class="clss"> <i class="fas fa-times"></i> </span>
+    </div>
+    <!--  菜單結束  -->
+
+    <div id="scrollsmoother-container">
+      <!--  Appbar  -->
+      <nav class="navbar navbar-expand-lg navbar-light sub-font tc-navbar-st7">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="static/img/logo.png" alt="" class="logo" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a href="#" id="user-location" class="nav-link">
+                  <i class="fas fa-map-marker-alt"></i> 獲取位置
+                </a>
+              </li>
+            </ul>
+            <ul class="navbar-nav">
+              <li id="login-link" class="nav-item">
+                <a class="nav-link login-dynamic-link" href="./login.html">
+                  Login <i class="fas fa-sign-in-alt"></i>
+                </a>
+              </li>
+              <li id="menu-link" class="nav-item menu-item d-none d-lg-block">
+                <a class="nav-link side_menu_btn" href="#"> Menu </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!--  AppBar結束  -->
+
+      <header class="tc-header-st7">
+        <div class="container">
+          <div class="booking-wrapper">
+            <div class="booking-form-container">
+              <form
+                class="booking-form clinicFilterForm"
+                action="javascript:void(0)"
+              >
+                <div class="booking-form-row">
+                  <div class="booking-form-item">
+                    <label>預約日期</label>
+                    <br />
+                    <input
+                      name="date"
+                      class="datepicker form-control datepicks_val"
+                      placeholder="mm / dd / yyyy"
+                      type="date"
+                    />
+                  </div>
+                  <span>|</span>
+                  <div class="booking-form-time">
+                    <label>預約時段</label>
+                    <br />
+                    <div class="parent" style="display: flex; gap: 10px">
+                      <div>
+                        <input
+                          class="timepicker_start"
+                          type="time"
+                          value="08:00"
+                        />
+                      </div>
+                      <div>
+                        <input
+                          class="timepicker_end"
+                          type="time"
+                          value="12:00"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <span>|</span>
+                  <div class="booking-form-item">
+                    <label>診所類別</label> <br />
+                    <div class="parent">
+                      <div class="custom-select">
+                        <select name="category" class="major-select">
+                          <option value="all" selected="">全部</option>
+                        </select>
+                      </div>
+                      <div class="custom-select-options">
+                        <ul>
+                          <li data-value="all">全部</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <span>|</span>
+                <div class="booking-form-row">
+                  <div class="booking-form-item">
+                    <label>
+                      <span class="distance-value">5</span> 公里
+                      <br />
+                      <div class="parent">
+                        <input
+                          type="range"
+                          class="modern-slider distance-range"
+                          name="distance"
+                          min="1"
+                          max="9"
+                          step="1"
+                          value="5"
+                        />
+                      </div>
+                    </label>
+                  </div>
+                </div>
+                <div class="booking-form-row full-width">
+                  <div class="booking-form-item full-width">
+                    <button type="submit" class="book-now-btn">立即搜尋</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main id="main-content">
+        <section id="rooms-suites">
+          <div class="container">
+            <div class="service-heading">
+              <div class="header">
+                <h3>附近診所</h3>
+              </div>
+              <div class="filter-btn-wrapper">
+                <div class="view-all">
+                  <a href="hospital.html" id="findAll">查看所有診所</a>
+                </div>
+              </div>
+            </div>
+            <section class="recommended-rooms" id="all_clinc">
+              <div class="slider-wrapper">
+                <div class="swiper room-slider">
+                  <div class="swiper-wrapper"></div>
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section id="rooms-suites">
+          <div class="container">
+            <div class="service-heading">
+              <div class="header">
+                <h3>小兒科</h3>
+              </div>
+              <div class="filter-btn-wrapper">
+                <div class="view-all">
+                  <a href="#" id="findPeds">查看所有診所</a>
+                </div>
+              </div>
+            </div>
+            <section class="recommended-rooms" id="peds">
+              <div class="slider-wrapper">
+                <div class="swiper room-slider">
+                  <div class="swiper-wrapper"></div>
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section id="rooms-suites">
+          <div class="container">
+            <div class="service-heading">
+              <div class="header">
+                <h3>牙科</h3>
+              </div>
+              <div class="filter-btn-wrapper">
+                <div class="view-all">
+                  <a href="hospital.html" id="findDds">查看所有診所</a>
+                </div>
+              </div>
+            </div>
+            <section class="recommended-rooms" id="dds">
+              <div class="slider-wrapper">
+                <div class="swiper room-slider">
+                  <div class="swiper-wrapper"></div>
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section id="rooms-suites">
+          <div class="container">
+            <div class="service-heading">
+              <div class="header">
+                <h3>眼科</h3>
+              </div>
+              <div class="filter-btn-wrapper">
+                <div class="view-all">
+                  <a href="hospital.html" id="findOph">查看所有診所</a>
+                </div>
+              </div>
+            </div>
+            <section class="recommended-rooms" id="oph">
+              <div class="slider-wrapper">
+                <div class="swiper room-slider">
+                  <div class="swiper-wrapper"></div>
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section id="rooms-suites">
+          <div class="container">
+            <div class="service-heading">
+              <div class="header">
+                <h3>婦產科</h3>
+              </div>
+              <div class="filter-btn-wrapper">
+                <div class="view-all">
+                  <a href="hospital.html" id="findObgyn">查看所有診所</a>
+                </div>
+              </div>
+            </div>
+            <section class="recommended-rooms" id="obgyn">
+              <div class="slider-wrapper">
+                <div class="swiper room-slider">
+                  <div class="swiper-wrapper"></div>
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section id="rooms-suites">
+          <div class="container">
+            <div class="service-heading">
+              <div class="header">
+                <h3>皮膚科</h3>
+              </div>
+              <div class="filter-btn-wrapper">
+                <div class="view-all">
+                  <a href="hospital.html" id="findDerm">查看所有診所</a>
+                </div>
+              </div>
+            </div>
+            <section class="recommended-rooms" id="derm">
+              <div class="slider-wrapper">
+                <div class="swiper room-slider">
+                  <div class="swiper-wrapper"></div>
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section id="rooms-suites">
+          <div class="container">
+            <div class="service-heading">
+              <div class="header">
+                <h3>耳鼻喉科</h3>
+              </div>
+              <div class="filter-btn-wrapper">
+                <div class="view-all">
+                  <a href="hospital.html" id="findEnt">查看所有診所</a>
+                </div>
+              </div>
+            </div>
+            <section class="recommended-rooms" id="ent">
+              <div class="slider-wrapper">
+                <div class="swiper room-slider">
+                  <div class="swiper-wrapper"></div>
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section id="rooms-suites">
+          <div class="container">
+            <div class="service-heading">
+              <div class="header">
+                <h3>身心科</h3>
+              </div>
+              <div class="filter-btn-wrapper">
+                <div class="view-all">
+                  <a href="hospital.html" id="findPsych">查看所有診所</a>
+                </div>
+              </div>
+            </div>
+            <section class="recommended-rooms" id="psych">
+              <div class="slider-wrapper">
+                <div class="swiper room-slider">
+                  <div class="swiper-wrapper"></div>
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section id="rooms-suites">
+          <div class="container">
+            <div class="service-heading">
+              <div class="header">
+                <h3>中醫</h3>
+              </div>
+              <div class="filter-btn-wrapper">
+                <div class="view-all">
+                  <a href="hospital.html" id="findTcm">查看所有診所</a>
+                </div>
+              </div>
+            </div>
+            <section class="recommended-rooms" id="tcm">
+              <div class="slider-wrapper">
+                <div class="swiper room-slider">
+                  <div class="swiper-wrapper"></div>
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section id="rooms-suites">
+          <div class="container">
+            <div class="service-heading">
+              <div class="header">
+                <h3>營養科</h3>
+              </div>
+              <div class="filter-btn-wrapper">
+                <div class="view-all">
+                  <a href="hospital.html" id="findNutrition">查看所有診所</a>
+                </div>
+              </div>
+            </div>
+            <section class="recommended-rooms" id="nutrition">
+              <div class="slider-wrapper">
+                <div class="swiper room-slider">
+                  <div class="swiper-wrapper"></div>
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section id="rooms-suites">
+          <div class="container">
+            <div class="service-heading">
+              <div class="header">
+                <h3>物理治療</h3>
+              </div>
+              <div class="filter-btn-wrapper">
+                <div class="view-all">
+                  <a href="hospital.html" id="findPt">查看所有診所</a>
+                </div>
+              </div>
+            </div>
+            <section class="recommended-rooms" id="pt">
+              <div class="slider-wrapper">
+                <div class="swiper room-slider">
+                  <div class="swiper-wrapper"></div>
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+      </main>
+
+      <footer class="tc-footer-st7"></footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="static/js/jquery-3.7.1.min.js"></script>
+    <script src="static/js/jquery-migrate-3.0.0.min.js"></script>
+    <script src="static/js/bootstrap.bundle.min.js"></script>
+    <script src="static/js/wow.min.js"></script>
+    <script src="static/js/jquery.fancybox.js"></script>
+    <script src="static/js/lity.js"></script>
+    <script src="static/js/swiper8-bundle.min.js"></script>
+    <script src="static/js/jquery.waypoints.min.js"></script>
+    <script src="static/js/jquery.counterup.js"></script>
+    <script src="static/js/parallaxie.js"></script>
+    <!-- === Gsap === -->
+    <script src="static/js/gsap.min.js"></script>
+    <script src="static/js/ScrollSmoother.min.js"></script>
+    <script src="static/js/ScrollTrigger.min.js"></script>
+    <script src="static/js/SplitText.min.js"></script>
+
+    <script src="static/js/common_js.js"></script>
+
+    <!-- ===== home scripts ===== -->
+    <script src="static/js/home_scripts.js"></script>
+    <!-- <script src="static/js/room-overview-slider.js"></script> -->
+    <script src="static/js/facilities-slider.js"></script>
+
+    <script src="static/js/hero-input-dropdown.js"></script>
+    <script src="static/js/bootstrap-datepicker.js"></script>
+    <!-- <script src="static/js/datepicker.js"></script> -->
+
+    <!-- rooms -->
+    <script src="static/js/rooms-and-suites-slider.js"></script>
+
+    <script src="static/js/gps.js"></script>
+  </body>
+</html>

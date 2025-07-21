@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>I-RES</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <!-- Fonts  -->
+    <link rel="stylesheet" href="static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/simple-line-icons.css">
+    <!-- CSS Animate -->
+    <link rel="stylesheet" href="static/css/animate.css">
+    <!-- Daterange Picker -->
+    <link rel="stylesheet" href="static/css/daterangepicker-bs3.css">
+    <!-- Switchery -->
+    <link rel="stylesheet" href="static/css/switchery.min.css">
+    <!-- Custom styles for this theme -->
+    <link rel="stylesheet" href="static/css/main.css">
+    <!-- bell -->
+    <link rel="stylesheet" href="static/css/bell.css">
+    <!-- Feature detection -->
+    <script src="static/js/modernizr-2.6.2.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #eef2f7;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .form-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-bottom: 8px;
+            min-width: 180px;
+            position: relative;
+            flex: 1 1 200px;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 8px 12px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #btnReserve {
+            height: 38px;
+            padding: 0 24px;
+            font-size: 14px;
+            border: none;
+            border-radius: 4px;
+            background-color: #1976d2;
+            color: white;
+            cursor: pointer;
+            flex: 0 0 auto;
+            margin-top: 24px;
+            width: 100px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input,
+        select,
+        button {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input,
+        select {
+            width: 100%;
+        }
+
+        #patient,
+        #multiDate,
+        #timeslot,
+        #doctorInput {
+            width: 200px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+        }
+
+        button {
+            background-color: #1976d2;
+            color: white;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #145a96;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            border: 1px solid #ccc;
+            text-align: left;
+            position: relative;
+            /* 讓 popup 定位不受 table 限制 */
+            overflow: visible !important;
+            /* 關鍵：允許 popup 顯示超出範圍 */
+        }
+
+        th {
+            background-color: #e6f2ff;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .popup-table-container {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            border: 1px solid #ccc;
+            width: 360px;
+            z-index: 10;
+            padding: 10px;
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .popup-table-container input {
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 6px;
+            font-size: 14px;
+        }
+
+        .popup-table-container table tr:hover {
+            background-color: #e6f2ff;
+            cursor: pointer;
+        }
+
+        #pagination,
+        #doctorPagination {
+            margin-top: 10px;
+            text-align: right;
+            font-size: 14px;
+        }
+
+        #pagination button,
+        #doctorPagination button {
+            margin: 0 2px;
+            padding: 2px 6px;
+            cursor: pointer;
+        }
+
+        .doctor-popup {
+            display: none;
+            position: absolute;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            padding: 8px;
+            z-index: 99;
+            min-width: 200px;
+            max-height: 300px;
+            overflow: auto;
+        }
+
+        .doctor-wrapper {
+            position: relative;
+            display: inline-block;
+            z-index: 1;
+            /* 確保 popup 在上層 */
+        }
+
+        .popup-body tr:hover {
+            background-color: #f0f8ff;
+            cursor: pointer;
+        }
+
+        .popup-body td {
+            padding: 6px 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            color: #666;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        #appointmentTable {
+            table-layout: auto;
+            width: 100%;
+        }
+
+        #appointmentTable td,
+        #appointmentTable th {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        td .view,
+        td .edit {
+            display: inline-block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        #appointmentTable .btnSave,
+        #appointmentTable .btnCancel,
+        #appointmentTable .btnEdit,
+        #appointmentTable .btnDelete {
+            min-width: 55px;
+            margin: 2px;
+            font-size: 12px;
+        }
+
+        .edit-date,
+        .doctor-edit,
+        .period-edit {
+            line-height: 34px;
+            height: 34px;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="main-wrapper" class="theme-default">
+        <header id="header">
+            <!--logo start-->
+            <div class="brand">
+                <a href="roomInfo.html" class="logo"
+                    style="font-size: 24px; margin-left: 10px; margin-top: 5px; display: inline-block;">
+                    <span id="clinicName"></span></a>
+                </a>
+            </div>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+            <div class="notification-wrapper">
+                <a href="clinicNotification.html">
+                    <div class="notification-icon" id="bell">
+                        <i class="fas fa-bell" style="position: fixed; top: 20px; right: 20px; font-size: 24px;"></i>
+                        <span class="badge"></span>
+                    </div>
+                </a>
+                <!-- <div class="notification-dropdown" id="dropdown">
+                    <p>📬 您有新通知</p>
+                    <ul>
+                        <li>✅ 報到通知</li>
+                        <li>💬 評價通知</li>
+                        <li>⚠️ 系統通知</li>
+                    </ul>                    
+                </div> -->
+            </div>
+            <!--logo end-->
+            <ul class="nav navbar-nav navbar-left" style="display: flex; align-items: center;">
+                <li class="toggle-navigation toggle-left">
+                    <button class="sidebar-toggle" id="toggle-left" style="padding: 8px 12px; font-size: 18px;">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </li>
+                <li>
+                    <img src="static/picture/ires.png" style="width: 3cm; height: auto; margin-left: 12px;" />
+                </li>
+            </ul>
+        </header>
+        <!--sidebar left start-->
+        <aside class="sidebar sidebar-left">
+            <nav>
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="nav-dropdown">
+                        <a href="#" title="Appointment">
+                            <i class="fa  fa-fw fa-cogs"></i> 預約管理
+                        </a>
+                        <ul class="nav-sub">
+                            <li>
+                                <a href="reservequery.html" title="reservequery">
+                                    預約查詢
+                                </a>
+                            </li>
+                            <li>
+                                <a href="appointment.html" title="Appointment">
+                                    新增預約
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="patientInfo.html" title="PatientInfo">
+                            <i class="fa  fa-fw fa-edit"></i> 病患資料
+                        </a>
+                    </li>
+                    <li class="nav-dropdown hidden">
+                        <a href="callRoom.html" title="callRoom">
+                            <i class="fa  fa-fw fa-th-list"></i> 診間叫號
+                        </a>
+                    </li>
+                    <li class="nav-dropdown hidden">
+                        <a href="#" title="FeedbackManagement">
+                            <i class="fa fa-fw fa-bar-chart-o"></i> 評價管理
+                        </a>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="#" title="AccountManagement">
+                            <i class="fa  fa-fw fa-folder-open"></i> 帳戶管理
+                        </a>
+                        <ul class="nav-sub">
+                            <li>
+                                <a href="clinicInfo.html" title="ClinicInfo">
+                                    診所資料
+                                </a>
+                            </li>
+                            <li>
+                                <a href="doctorInfo.html" title="DocInfo">
+                                    醫生資料
+                                </a>
+                            </li>
+                            <li hidden>
+                                <a href="#" title="Feedback">
+                                    意見回饋
+                                </a>
+                            </li>
+                            <li>
+                                <a href="accountupdatepsd.html" title="Password">
+                                    修改密碼
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="#" title="Logout">
+                            <i class="fa  fa-fw fa-file-text"></i> 登出
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <!--main content start-->
+        <section class="main-content-wrapper">
+            <div class="pageheader">
+                <h1>預約管理</h1>
+            </div>
+
+            <section id="main-content" class="animated fadeInUp">
+                <div class="form-container">
+                    <div class="form-group">
+                        <label for="lab patient">病患</label>
+                        <input type="text" id="patient" readonly placeholder="請選擇病患">
+                        <div id="patientTableContainer" class="popup-table-container">
+                            <input type="text" id="patientSearch" placeholder="搜尋電話或姓名...">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>病患電話</th>
+                                        <th>病患姓名</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="patientTableBody"></tbody>
+                            </table>
+
+                            <div id="pagination"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="multiDate">日期（可複選）</label>
+                        <input type="text" id="multiDate" readonly placeholder="請選擇一或多個日期">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="timeslot">時段</label>
+                        <select id="timeslot">
+                            <option>早上</option>
+                            <option>下午</option>
+                            <option>晚上</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lab doctorInput">醫師</label>
+                        <input type="text" id="doctorInput" readonly placeholder="請選擇醫師">
+                        <div id="doctorTableContainer" class="popup-table-container">
+                            <input type="text" id="doctorSearch" placeholder="搜尋醫師名稱...">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>醫師編號</th>
+                                        <th>醫師姓名</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="doctorTableBody"></tbody>
+                            </table>
+                            <div id="doctorPagination"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button id="btnReserve">預約</button>
+                    </div>
+                </div>
+
+                <table id="appointmentTable">
+                    <!--                    <colgroup>-->
+                    <!--                        <col style="width: 180px;"> &lt;!&ndash; 預約日期 &ndash;&gt;-->
+                    <!--                        <col style="width: 120px;"> &lt;!&ndash; 時段 &ndash;&gt;-->
+                    <!--                        <col style="width: 180px;"> &lt;!&ndash; 醫師 &ndash;&gt;-->
+                    <!--                        <col style="width: 100px;"> &lt;!&ndash; 看診號碼 &ndash;&gt;-->
+                    <!--                        <col style="width: 260px;"> &lt;!&ndash; 操作 &ndash;&gt;-->
+                    <!--                    </colgroup>-->
+                    <thead>
+                        <tr>
+                            <th>日期</th>
+                            <th>時段</th>
+                            <th>醫師</th>
+                            <th>看診號碼</th>
+                            <th>預約狀態</th>
+                            <th>建立時間</th>
+                            <th>修改時間</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="appointmentList"></tbody>
+                </table>
+            </section>
+        </section>
+    </section>
+
+    <div id="doctorPopup" class="doctor-popup">
+        <input type="text" class="popup-search" placeholder="搜尋醫師..." style="width:100%;margin-bottom:6px;">
+        <table style="width:100%; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th style="border-bottom: 1px solid #ccc;">醫師編號</th>
+                    <th style="border-bottom: 1px solid #ccc;">醫師姓名</th>
+                </tr>
+            </thead>
+            <tbody class="popup-body"></tbody>
+        </table>
+        <div class="popup-footer" style="text-align:center; margin-top: 4px;"></div>
+    </div>
+
+    <!--/Config demo-->
+    <!--Global JS-->
+    <script src="static/js/jquery-1.11.1.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/jquery.navgoco.min.js"></script>
+    <script src="static/js/pace.min.js"></script>
+    <script src="static/js/jquery.fullscreen-min.js"></script>
+    <script src="static/js/app.js"></script>
+    <!--Page Level JS-->
+    <script src="static/js/jquery.countTo.js"></script>
+    <script src="static/js/skycons.js"></script>
+    <script src="static/js/moment.min.js"></script>
+    <script src="static/js/daterangepicker.js"></script>
+    <!-- ChartJS  -->
+    <script src="static/js/Chart.min.js"></script>
+    <!-- Morris  -->
+    <script src="static/js/morris.min.js"></script>
+    <!--<script src="static/js/raphael.2.1.0.min.js"></script>-->
+    <!-- Vector Map  -->
+    <script src="static/js/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="static/js/jquery-jvectormap-world-mill-en.js"></script>
+    <!-- Gauge  -->
+    <!--<script src="static/js/gauge.min.js"></script>
+    <script src="static/js/gauge-demo.js"></script>-->
+    <!-- Calendar  -->
+    <script src="static/js/clndr.js"></script>
+    <script src="static/js/clndr-demo.js"></script>
+    <script src="static/js/underscore-min.js"></script>
+    <!-- Switch -->
+    <script src="static/js/switchery.min.js"></script>
+    <!--Load these page level functions-->
+    <script src="static/js/bell.js"></script>
+    <script src="./static/js/appointment.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const name = sessionStorage.getItem("clinicName");
+            if (name) {
+                document.getElementById("clinicName").textContent = name;
+            } else {
+                // 未登入或資料遺失，導回登入頁
+                alert("尚未登入");
+                location.href = "/ires-system/Clinic/login.html";
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // 處理登出點擊
+            const logoutLink = document.querySelector('a[title="Logout"]');
+            if (logoutLink) {
+                logoutLink.addEventListener("click", function (e) {
+                    e.preventDefault();
+
+                    // 彈窗確認
+                    if (confirm("確定要登出嗎？")) {
+                        // 發送登出請求
+                        fetch('/ires-system/clinic/logout', {
+                            method: 'DELETE',
+                            credentials: 'include' // 確保 session cookie 被送出
+                        })
+                            .then(response => {
+                                if (response.ok) {
+                                    // 跳轉回登入頁
+                                    sessionStorage.clear();
+                                    window.location.href = '/ires-system/Clinic/login.html';
+                                } else {
+                                    alert("登出失敗，請稍後再試");
+                                }
+                            })
+                            .catch(err => {
+                                console.error("登出錯誤：", err);
+                                alert("無法連線到伺服器");
+                            });
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

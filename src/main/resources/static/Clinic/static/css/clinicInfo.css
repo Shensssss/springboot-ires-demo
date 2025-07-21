@@ -1,0 +1,170 @@
+div.clinicInfo{
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    margin-top: 10px;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 3px 6px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+label {
+    font-size: 14px;
+    color: black;
+}
+
+.img {
+    flex-shrink: 0;
+}
+
+.editBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 6px 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#businessHoursTitle{
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.business-hours-display {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.business-hours-display th,
+.business-hours-display td {
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 8px;
+    min-width: 60px;
+}
+
+.business-hours-display td {
+    height: 40px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.business-hours-display td:empty {
+    background-color: #f8f8f8;
+    color: #ccc;
+}
+
+
+
+.major-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);  /* 每行顯示 5 個元素 */
+    gap: 10px;  /* 元素之間的間距 */
+    margin-top: 10px;
+}
+
+.major-grid input {
+    margin-right: 5px;  /* 調整 checkbox 和 label 之間的間距 */
+}
+
+.major-grid label {
+    font-weight: normal;
+    font-size: 14px;  /* 調整字體大小 */
+    margin-bottom: 0;  /* 取消 label 和 checkbox 之間的額外間距 */
+    display: inline-block; /* 讓 label 和 checkbox 在同一行顯示 */
+    margin-left: 5px;  /* 控制 checkbox 和 label 之間的間距 */
+}
+
+/* 背景遮罩 */
+.form-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9998;
+    overflow: auto;
+}
+
+/* 當顯示表單時 */
+.form-overlay.show {
+    display: flex;
+}
+
+/* 表單置中 */
+.form-popup {
+    display: none;
+    z-index: 9999;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90vw;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+#basicInfo{
+    padding: 30px;
+}
+
+/* 針對表單內的表格樣式進行設定 */
+#editBusinessHoursForm table {
+    width: 100%; /* 表格寬度為 100% */
+    border-collapse: collapse; /* 合併表格邊框 */
+    margin-top: 10px;
+}
+
+/* 表格的標題列 */
+#editBusinessHoursForm th {
+    background-color: #f0f0f0; /* 標題列背景色 */
+    font-weight: bold;  /* 加粗字體 */
+    padding: 10px;  /* 上下內邊距 */
+    text-align: center;  /* 文字置中 */
+    border: 1px solid #ccc;  /* 邊框顏色 */
+}
+
+/* 表格內容列 */
+#editBusinessHoursForm td {
+    text-align: center;  /* 文字置中 */
+    padding: 10px;  /* 內邊距 */
+    border: 1px solid #ccc;  /* 邊框顏色 */
+    vertical-align: middle; /* 垂直置中 */
+}
+
+/* 設定不同時間段的背景顏色 */
+#editBusinessHoursForm td p {
+    margin: 0;
+    font-weight: bold;
+}
+
+/* 讓checkbox間距拉開一點 */
+#editBusinessHoursForm input[type="checkbox"] {
+    margin: 5px 5px;  /* 增加 checkbox 之間的間距 */
+}
+
+#mapPreview{
+    width:200px; 
+    height:150px; 
+    border:1px solid #ccc;
+    margin: 5px
+}

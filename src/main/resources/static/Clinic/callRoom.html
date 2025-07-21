@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>診間叫號畫面</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    .status-arrived { color: green; font-weight: bold; }
+    .status-not-arrived { color: red; font-weight: bold; }
+    .status-cancelled { color: gray; font-weight: bold; text-decoration: line-through; }
+    .status-finished { color: darkblue; font-weight: bold; background-color: #f0f0f0; }
+
+    .patient-table-scroll {
+      overflow-y: auto;
+      flex-grow: 1;
+    }
+    .btn-call {
+      background-color: #47607a;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 20px;
+      margin: 4px;
+      min-width: 70px;
+    }
+    .btn-call:hover {
+      background-color: #2e3f54;
+    }
+    .selected-row {
+      background-color: #d0ebff !important;
+      transition: background-color 0.3s;
+    }
+    .full-height-card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+</head>
+<body class="container mt-5 mb-5">
+  <h2 class="mb-4">診間叫號</h2>
+
+  <div class="row gx-4 d-flex align-items-start">
+    <!-- 左側：診間病人卡片 -->
+    <div class="col-md-7">
+      <div id="roomCardContainer" class="h-100"></div>
+    </div>
+
+    <!-- 右側：看診狀態與資訊 -->
+    <div class="col-md-5">
+      <!-- 看診狀態 -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-secondary text-white">看診狀態</div>
+        <div class="card-body">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="statusOption" id="status1" value="0" checked>
+            <label class="form-check-label" for="status1">尚未開診</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="statusOption" id="status2" value="1">
+            <label class="form-check-label" for="status2">看診中</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="statusOption" id="status3" value="2">
+            <label class="form-check-label" for="status3">已關診</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 目前號碼 -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-primary text-white">目前號碼</div>
+        <div class="card-body">
+          <p class="mb-1 fw-bold" id="currentNumber" data-number="">號碼：-</p>
+          <p class="mb-0" id="currentName">姓名：-</p>
+        </div>
+      </div>
+
+      <!-- 將來號碼 -->
+      <div class="card shadow-sm">
+        <div class="card-header bg-info text-white">將來號碼（5位）</div>
+        <div class="card-body">
+          <ul id="upcomingList" class="list-group list-group-flush small"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-between align-items-center mt-4 flex-wrap">
+    <div class="d-flex gap-2 flex-wrap">
+      <button id="prevBtn" class="btn-call" onclick="prevNumber()">上一號</button>
+      <button id="nextBtn" class="btn-call" onclick="nextNumber()">下一號</button>
+      <button id="insertBtn" class="btn-call" data-bs-toggle="modal" data-bs-target="#insertModal">插號</button>
+      <button id="completeBtn" type="button" class="btn btn-outline-success" onclick="completeConsultation()">完成看診</button>
+    </div>
+
+    <button class="btn btn-secondary" onclick="window.close()">
+      <i class="bi bi-x-circle"></i> 關閉視窗
+    </button>
+  </div>
+
+  <!-- 插號 modal -->
+  <div class="modal fade" id="insertModal" tabindex="-1" aria-labelledby="insertModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="insertModalLabel">插號</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="關閉"></button>
+        </div>
+        <div class="modal-body">
+          <label for="insertNumber" class="form-label">請輸入號碼：</label>
+          <input type="number" class="form-control" id="insertNumber" placeholder="例如 5">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary" onclick="insertNumber()">確認</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="static/js/bell.js"></script>
+  <script src="static/js/callRoom.js"></script>
+</body>
+</html>

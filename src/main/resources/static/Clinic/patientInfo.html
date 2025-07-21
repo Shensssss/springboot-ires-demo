@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>病患資料</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <!-- Fonts  -->
+    <link rel="stylesheet" href="static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/simple-line-icons.css">
+    <!-- CSS Animate -->
+    <link rel="stylesheet" href="static/css/animate.css">
+    <!-- Daterange Picker -->
+    <link rel="stylesheet" href="static/css/daterangepicker-bs3.css">
+    <!-- Switchery -->
+    <link rel="stylesheet" href="static/css/switchery.min.css">
+    <!-- Custom styles for this theme -->
+    <link rel="stylesheet" href="static/css/main.css">
+    <!-- bell -->
+    <link rel="stylesheet" href="static/css/bell.css">
+    <!-- Feature detection -->
+    <script src="static/js/modernizr-2.6.2.min.js"></script>
+    <link rel="stylesheet" href="static/css/patientInfo.css">
+</head>
+
+<body>
+    <section id="main-wrapper" class="theme-default">
+        <header id="header" style="position: fixed; display: flex;">
+            <!--logo start-->
+            <div class="brand">
+                <a href="roomInfo.html" class="logo" style="position: fixed; top: -3px; left: 10px; font-size: 24px;">
+                    <span id="clinicName"></span></a>
+            </div>
+            <img src="static/picture/ires.png"
+                style=" position: fixed; margin-top: 0.4cm; width:3cm; height:auto; left: 280px;">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+            <div class="notification-wrapper">
+                <a href="clinicNotification.html">
+                    <div class="notification-icon" id="bell">
+                        <i class="fas fa-bell" style="position: fixed; top: 20px; right: 20px; font-size: 24px;"></i>
+                        <span class="badge"></span>
+                    </div>
+                </a>
+                <!-- <div class="notification-dropdown" id="dropdown">
+                    <p>📬 您有新通知</p>
+                    <ul>
+                        <li>✅ 報到通知</li>
+                        <li>💬 評價通知</li>
+                        <li>⚠️ 系統通知</li>
+                    </ul>                    
+                </div> -->
+            </div>
+            <!--logo end-->
+            <ul class="nav navbar-nav navbar-left">
+                <li class="toggle-navigation toggle-left">
+                    <button class="sidebar-toggle" id="toggle-left" style="width: 10px;">
+                        <i class="fa fa-bars" style="position: fixed; top: 25px; left: 250px;"></i>
+                    </button>
+                </li>
+            </ul>
+        </header>
+        <!--sidebar left start-->
+        <aside class="sidebar sidebar-left">
+            <nav>
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="nav-dropdown">
+                        <a href="#" title="Appointment">
+                            <i class="fa  fa-fw fa-cogs"></i> 預約管理
+                        </a>
+                        <ul class="nav-sub">
+                            <li>
+                                <a href="reservequery.html" title="reservequery">
+                                    預約查詢
+                                </a>
+                            </li>
+                            <li>
+                                <a href="appointment.html" title="Appointment">
+                                    新增預約
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="patientInfo.html" title="PatientInfo">
+                            <i class="fa  fa-fw fa-edit"></i> 病患資料
+                        </a>
+                    </li>
+                    <li class="nav-dropdown hidden">
+                        <a href="callRoom.html" title="callRoom">
+                            <i class="fa  fa-fw fa-th-list"></i> 診間叫號
+                        </a>
+                    </li>
+                    <li class="nav-dropdown hidden">
+                        <a href="#" title="FeedbackManagement">
+                            <i class="fa fa-fw fa-bar-chart-o"></i> 評價管理
+                        </a>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="#" title="AccountManagement">
+                            <i class="fa  fa-fw fa-folder-open"></i> 帳戶管理
+                        </a>
+                        <ul class="nav-sub">
+                            <li>
+                                <a href="clinicInfo.html" title="ClinicInfo">
+                                    診所資料
+                                </a>
+                            </li>
+                            <li>
+                                <a href="doctorInfo.html" title="DocInfo">
+                                    醫生資料
+                                </a>
+                            </li>
+                            <li hidden>
+                                <a href="#" title="Feedback">
+                                    意見回饋
+                                </a>
+                            </li>
+                            <li>
+                                <a href="accountupdatepsd.html" title="Password">
+                                    修改密碼
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="#" title="Logout">
+                            <i class="fa  fa-fw fa-file-text"></i> 登出
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <!--main content start-->
+        <section class="main-content-wrapper">
+            <section id="main-content" class="animated fadeInUp">
+                <!--<在此填入主要內容-->
+                <h2>病患資料</h2>
+                <form id="queryForm">
+                    <div>
+                        <div>
+                            <label for="name">姓名：</label>
+                            <input type="text" id="name" placeholder="請輸入全名" required>
+                            <span style="color: red; font-size: 10px;">*必填</span>
+                        </div>
+                        <div>
+                            <label>生日：</label>
+                            <input type="date" id="datePicker">
+                            <span style="color: red; font-size: 10px;">*與手機號碼擇一必填</span>
+                        </div>
+                        <div>
+                            <label for="phone">手機號碼：</label>
+                            <input type="text" id="phone" placeholder="請勿鍵入空白或符號">
+                            <span style="color: red; font-size: 10px;">*與生日擇一必填</span>
+                        </div>
+                        <button type="submit" id="search">查詢</button>
+                    </div>
+                </form>
+                <hr>
+                <div>
+                    <span id="result">查詢結果</span>
+                </div>
+                <div class="container">
+                    <div class="top-row">
+                        <div class="box" id="basics">
+                            <p class="item" id="basic" data-patient-id="">基本資料</p>
+                            <img src="" alt="圖片未上傳" class="profilePicture" id="profilePictureResult">
+                            <p class="detail" id="nameResult">姓名：</p>
+                            <p class="detail" id="genderResult">性別：</p>
+                            <p class="detail" id="birthdayResult">生日：</p>
+                            <p class="detail" id="bloodTypeResult">血型：</p>
+                            <p class="detail" id="phoneResult">手機號碼：</p>
+                            <p class="detail" id="addressResult">地址：</p>
+                            <p class="detail" id="emailResult">電子郵件：</p>
+                            <p class="detail" id="emergencyNameResult">緊急聯絡人：</p>
+                            <p class="detail" id="relationResult">關係：</p>
+                            <p class="detail" id="emergencyContentResult">電話：</p>
+                        </div>
+                        <div class="box" id="note">
+                            <p class="item" id="notes" data-patient-id="">備註<button class="noteEditing"
+                                    id="edit">編輯</button></p>
+                            <p class="detail" id="notesResult"></p>
+                            <textarea class="noteEditing -none" id="noteInput" placeholder="請輸入備註"></textarea>
+                            <button class="noteEditing -none" id="save">儲存</button>
+                        </div>
+                    </div>
+
+                    <div class="record">
+                        <p class="item" id="appointmentHistory" data-patient-id="">預約紀錄</p>
+
+                        <table id="appointmentTable" class="appointment-table">
+                            <thead>
+                                <tr>
+                                    <th>預約日期</th>
+                                    <th>診所名稱</th>
+                                    <th>醫師姓名</th>
+                                    <th>預約時段</th>
+                                    <th>預約序號</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- 插入資料 -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+            </section>
+        </section>
+    </section>
+
+    <script src="static/js/jquery-3.7.1.min.js"></script>
+    <script src="static/js/patientInfo.js"></script>
+    <!--/Config demo-->
+    <!--Global JS-->
+    <script src="static/js/jquery-1.11.1.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/jquery.navgoco.min.js"></script>
+    <script src="static/js/pace.min.js"></script>
+    <script src="static/js/jquery.fullscreen-min.js"></script>
+    <script src="static/js/app.js"></script>
+    <!--Page Level JS-->
+    <script src="static/js/jquery.countTo.js"></script>
+    <script src="static/js/skycons.js"></script>
+    <script src="static/js/moment.min.js"></script>
+    <script src="static/js/daterangepicker.js"></script>
+    <!-- ChartJS  -->
+    <script src="static/js/Chart.min.js"></script>
+    <!-- Morris  -->
+    <script src="static/js/morris.min.js"></script>
+    <!--<script src="static/js/raphael.2.1.0.min.js"></script>-->
+    <!-- Vector Map  -->
+    <script src="static/js/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="static/js/jquery-jvectormap-world-mill-en.js"></script>
+    <!-- Gauge  -->
+    <!--<script src="static/js/gauge.min.js"></script>
+    <script src="static/js/gauge-demo.js"></script>-->
+    <!-- Calendar  -->
+    <script src="static/js/clndr.js"></script>
+    <script src="static/js/clndr-demo.js"></script>
+    <script src="static/js/underscore-min.js"></script>
+    <!-- Switch -->
+    <script src="static/js/switchery.min.js"></script>
+    <!--Load these page level functions-->
+    <script src="static/js/bell.js"></script>
+    <!--<script>
+    $(document).ready(function() {
+        app.dateRangePicker();
+        app.chartJs();
+        app.weather();
+        app.spinStart();
+        app.spinStop();
+    });
+    </script>-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const name = sessionStorage.getItem("clinicName");
+            if (name) {
+                document.getElementById("clinicName").textContent = name;
+            } else {
+                // 未登入或資料遺失，導回登入頁
+                alert("尚未登入");
+                location.href = "/ires-system/Clinic/login.html";
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // 處理登出點擊
+            const logoutLink = document.querySelector('a[title="Logout"]');
+            if (logoutLink) {
+                logoutLink.addEventListener("click", function (e) {
+                    e.preventDefault();
+
+                    // 彈窗確認
+                    if (confirm("確定要登出嗎？")) {
+                        // 發送登出請求
+                        fetch('/ires-system/clinic/logout', {
+                            method: 'DELETE',
+                            credentials: 'include' // 確保 session cookie 被送出
+                        })
+                            .then(response => {
+                                if (response.ok) {
+                                    // 跳轉回登入頁
+                                    sessionStorage.clear();
+                                    window.location.href = '/ires-system/Clinic/login.html';
+                                } else {
+                                    alert("登出失敗，請稍後再試");
+                                }
+                            })
+                            .catch(err => {
+                                console.error("登出錯誤：", err);
+                                alert("無法連線到伺服器");
+                            });
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

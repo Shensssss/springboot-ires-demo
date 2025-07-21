@@ -1,0 +1,162 @@
+body {
+  margin: 0;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 360px;
+  width: 200px;
+  background-color: lightgray;
+  padding: 20px;
+  left: 0;
+  border-radius: 10px;
+  }
+/* 小螢幕時隱藏 Sidebar */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+}
+/* 顯示 Sidebar 的按鈕 */
+.toggle-sidebar {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+}
+/* 小螢幕時顯示按鈕 */
+@media (max-width: 768px) {
+    .toggle-sidebar {
+        display: block;
+    }
+}
+.leftmenu {
+  display: block;
+  padding: 15px 20px;
+  margin: 20px 0;
+  text-decoration: none;
+  text-align: center;
+  color: #000000;
+  background-color: #ffffff;
+  border-radius: 10px;
+  transition: background-color 0.3s, color 0.3s;
+  font-size: large;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+}
+.leftmenu:hover {
+  background-color: gray;
+  color: white;
+}
+
+/* 主要內容 */
+.preview-img {
+    margin-top: 10px;
+    max-width: 120px;
+    max-height: 120px;
+    display: block;
+}
+.form-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffff; /* 白色主體 */
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* 柔和陰影 */
+    width: 100%;
+    max-width: 450px;
+}
+
+.form-container h2 {
+    color:black; /* 深灰色標題 */
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    
+}
+
+label {
+    flex: 1;
+    text-align: right;
+    margin-right: 10px;
+    color: black; /* 淡灰色標籤 */
+    font-weight: 500;
+}
+
+input, select, textarea {
+    flex: 1;
+    padding: 6px;
+    width: auto;
+    border: 1px solid #ccc; /* 淡灰邊框 */
+    border-radius: 6px;
+    background-color: #f0f0f0; /* 淡灰色輸入框背景 */
+    color: #333;
+}
+
+input[type="file"] {
+    flex: 1;
+    width: 0; 
+    max-width: 100%;
+
+}
+
+button {
+    background-color:rgb(38, 229, 38); 
+    color: white;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+button:hover {
+    background-color: rgb(1, 163, 1); 
+}
+
+.required {
+    color: #d32f2f; /* 深紅色必填欄位標示 */
+}
+/* .notification-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.notification-wrapper .badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    font-size: 12px;
+    padding: 4px 6px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    display: block; 
+}
+
+.notification-wrapper i.fas.fa-bell {
+    font-size: 24px;
+    color: #333;
+}
+
+.notification-wrapper i.fas.fa-bell:hover {
+    color: orange;
+} */

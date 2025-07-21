@@ -1,0 +1,122 @@
+/* 背景遮罩 */
+.form-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    overflow: auto; 
+}
+
+.form-overlay.show {
+    display: flex;
+}
+
+.form-popup {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80vw;
+    max-width: 600px;
+    max-height: 95vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    transform: translate(25%, 25%);
+}
+
+/* 表單輸入框 */
+.form-popup input {
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+/* 表單按鈕 */
+.form-popup button {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+/* 卡片按鈕（編輯、刪除） */
+.editBtn, .deleteBtn {
+    border-radius: 5px;
+    font-size: 14px;
+    color: white;
+    border: none;
+    padding: 5px;
+    top: 10px;
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+}
+
+.editBtn {
+    background-color: #4CAF50;
+    right: 70px;
+}
+
+.deleteBtn {
+    background-color: #f44336;
+    right: 10px;
+}
+
+.deleteBtn:hover, .editBtn:hover {
+    opacity: 0.7;
+}
+
+/* 卡片樣式 */
+div.card {
+    position: relative;
+    width: 60%;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 80px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    box-shadow: 3px 6px 10px rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+    z-index: 0;
+}
+
+/* 上方搜尋區 */
+.topBar {
+    margin: 20px;
+}
+
+.topBar input {
+    padding: 8px;
+}
+
+.topBar button {
+    padding: 8px;
+    margin-left: 10px;
+}
+
+/* 顯示用標籤 */
+.label {
+    font-weight: bold;
+    color: black;
+}
+
+span.name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* 預覽圖片 */
+.img-preview {
+    max-width: 100px;
+    display: none;
+}

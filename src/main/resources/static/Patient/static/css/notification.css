@@ -1,0 +1,137 @@
+body {
+  margin: 0;
+}
+.row{
+  left: 0;
+  position: relative;
+}
+.sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 360px;
+  width: 200px;
+  background-color: lightgray;
+  padding: 20px;
+  left: 0;
+  border-radius: 10px;
+  }
+/* 小螢幕時隱藏 Sidebar */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+}
+
+.leftmenu {
+  display: block;
+  padding: 15px 20px;
+  margin: 20px 0;
+  text-decoration: none;
+  text-align: center;
+  color: #000000;
+  background-color: #ffffff;
+  border-radius: 10px;
+  transition: background-color 0.3s, color 0.3s;
+  font-size: large;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+}
+.leftmenu:hover {
+  background-color: gray;
+  color: white;
+}
+
+/*主要內容-最新通知*/
+.div2{
+  color: #000000;
+  text-align: left;
+  font-size: 22px;
+  font-weight: 900;
+  position: absolute;
+  left: 45%;
+  top: -30px;
+}
+
+/* 通知區塊容器 */
+    #notificationContainer {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .notifications {
+      position: relative;
+      padding: 12px 16px;
+      margin-bottom: 12px;
+      border-left: 4px solid #888;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      opacity: 1;
+    }
+    .notifications.fade-out {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+
+    .deleteBtn {
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      background: none;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      background-color: red;
+    }
+    .deleteBtn:hover {
+      background-color: #000000;
+      color: red;
+    }
+    .notificationType {
+      font-weight: 800;
+      font-size: 22px;
+      margin-bottom: 6px;
+      color: black;
+    }
+    .clinicName {
+      font-size: 20px;
+      color: #000000;
+      margin-bottom: 4px;
+    }
+    .message {
+      font-size: 18px;
+      color: #000000;
+    }
+
+/* 通知鈴鐺 */
+/* .notification-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.notification-wrapper .badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    font-size: 12px;
+    padding: 4px 6px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    display: block; 
+}
+
+.notification-wrapper i.fas.fa-bell {
+    font-size: 24px;
+    color: #333;
+}
+
+.notification-wrapper i.fas.fa-bell:hover {
+    color: orange;
+} */

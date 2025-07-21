@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登入畫面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; /* 隱藏 body 的捲軸 */
+        }
+        .login-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 300px;
+            max-height: 95vh; /* 設定最大高度 */
+            overflow-y: auto; /* 允許內容捲動 */
+        }
+        .login-form h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50; /* 使用不同的主題色 */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+        .remember-me-group {
+            text-align: left;
+            margin-bottom: 15px;
+            font-size: 12px;
+        }
+
+        .remember-me-group input[type="checkbox"] {
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        .remember-me-group label {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+<form class="login-form" action="/login" method="POST">
+    <h1><img src="static/picture/ires.png" style="display: block; margin: auto; margin-top: 10px; margin-bottom: 20px;"></h1>
+    <h2 style="font-size: 14px; text-align: center; color: cadetblue; margin-bottom: 25px;">診所機構登入</h2>
+
+    <div class="form-group">
+        <label for="email">電子郵件</label>
+        <input type="email" id="email" name="email" placeholder="請輸入電子郵件" required>
+    </div>
+
+    <div class="form-group" style="position: relative;">
+        <label for="password">密碼</label>
+        <input type="password" id="password" name="password" placeholder="請輸入密碼" required>
+    </div>
+
+<!--<div class="remember-me-group">
+        <input type="checkbox" id="remember-me" name="remember_me">
+        <label for="remember-me">保持登入</label>
+    </div>-->
+
+    <button type="submit" class="submit-btn">登入</button>
+
+    <div style="text-align: center; margin-top: 20px; font-size: 12px;">
+         <a href="http://localhost:8080/ires-system/Clinic/forgetPassword.html">忘記密碼？</a> | <a href="/ires-system/Clinic/register.html">前往註冊</a>
+    </div> 
+</form>
+
+<script>
+const account = document.getElementById('email');
+const password = document.getElementById('password');
+
+
+document.querySelector('form').addEventListener('submit', (event) => {
+event.preventDefault();
+
+
+if (!account.value) {
+  alert('帳號未輸入');
+  return;
+}
+
+if (!password.value) {
+  alert('密碼未輸入');
+  return;
+}
+
+
+// 送出資料
+fetch('/ires-system/clinic/login', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    account: account.value,
+    password: password.value
+  })
+})
+.then(resp => resp.json())
+.then(body => {
+  if(body.successful){
+	sessionStorage.setItem("clinicName", body.clinicName);
+    sessionStorage.setItem("account", body.account);
+    sessionStorage.setItem("clinicId", body.clinicId);
+      alert("登入成功");
+	  location.href = 'http://localhost:8080/ires-system/Clinic/roomInfo.html';
+  }else{
+	 alert("登入失敗：" + body.message);
+  }
+}); 
+});
+
+
+</script>
+
+
+</html>

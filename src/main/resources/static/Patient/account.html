@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="static/css/css2.css" rel="stylesheet">
+
+<link href="static/css/bootstrap.min.css" rel="stylesheet">
+<link href="static/css/all.min.css" rel="stylesheet">
+<link href="static/css/select2.min.css" rel="stylesheet">
+<link href="static/css/select2-bootstrap-5-theme.min.css" rel="stylesheet">
+<link href="static/css/ion.rangeSlider.min.css" rel="stylesheet">
+<link rel="stylesheet" href="static/css/common_style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+<link rel="stylesheet" href="static/css/home_style.css">
+<link rel="stylesheet" href="static/css/account.css">
+
+<title>I-RES帳戶資訊</title>
+<link rel="icon" href="static/img/fav.png" type="image/png" />
+</head>
+
+<body class="home-st7">
+
+	<!--  滑鼠效果  -->
+	<div class="mouse-cursor cursor-outer"></div>
+	<div class="mouse-cursor cursor-inner"></div>
+
+
+	<!--  菜單頁面  -->
+	<div class="side_overlay"></div>
+	<div class="side_menu">
+		<div class="content">
+			<div class="row">
+				<div class="main_links">
+					<ul>
+						<li><a href="#" class="main_link"> <i class="fas fa-home"></i> 主頁 </a></li>
+						<li><a href="#" class="main_link"> <i class="fas fa-calendar-check"></i> 預約紀錄 </a></li>
+						<li><a href="#" class="main_link"> <i class="fas fa-heart"></i> 我的收藏 </a></li>
+						<li><a href="#" class="main_link"> <i class="fas fa-bell"></i> 通知消息	</a></li>
+						<li><a href="#" class="main_link"> <i class="fas fa-user-cog"></i> 帳戶設定	</a></li>
+						<li>
+                <a href="#" class="main_link logout-link">
+                  <i class="fas fa-sign-out-alt"></i> 登出
+                </a>
+              </li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+		<span class="clss"> <i class="fas fa-times"></i>
+		</span>
+	</div>
+	<!--  菜單結束  -->
+
+
+	<div id="scrollsmoother-container">
+
+
+		<!--  Appbar  -->
+		<nav
+			class="navbar navbar-expand-lg navbar-light sub-font tc-navbar-st7">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="index.html"> <img
+					src="static/img/logo.png" alt="" class="logo">
+				</a>
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mx-auto">
+						<li class="nav-item"><a href="#" id="user-location"
+							class="nav-link"> <i class="fas fa-map-marker-alt"></i> 獲取位置
+						</a></li>
+					</ul>
+					<ul class="navbar-nav">
+						<!-- <li class="nav-item">
+							<a class="nav-link" href="javascript:void(0);" id="notificationBell">
+								<div class="notification-wrapper" style="position: relative;">
+									<i class="fas fa-bell"></i>
+									<span class="badge bg-danger" id="notificationCount" hidden>0</span>
+								</div>
+							</a>
+						</li> -->
+						<li class="nav-item menu-item d-none d-lg-block">
+							<a class="nav-link side_menu_btn" href="#"> Menu </a>
+						</li>
+
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<!--  AppBar結束  -->
+		  
+		<div class="container mt-4">
+			<div class="row">
+				
+				<!-- 左側按鈕 -->
+				<div class="sidebar">
+					<a href="reservation.html" class="leftmenu">預約紀錄</a>
+					<a href="favorites.html" class="leftmenu">♡我的收藏</a>
+					<a href="notification.html" class="leftmenu">通知消息</a>
+					<a href="account.html" class="leftmenu">帳戶資訊</a>
+				</div>
+			
+				<!-- 中間資訊 -->
+			<div class="form-container">
+			<h2>一般資料</h2>
+			<form id="infoForm">
+				<div class="form-group">
+					<label for="profilePicture">大頭照</label>
+					<input type="file" id="profilePicture" name="profilePicture" accept="image/*">
+					<img id="preview" src="" class="preview-img">
+				</div>
+
+				<div class="form-group">
+					<label for="name"><span class="required">＊</span>姓名 </label>
+					<input type="text" id="name" name="name" required>
+				</div>
+
+				<div class="form-group">
+					<label for="gender"><span class="required">＊</span>性別 </label>
+					<select id="gender" name="gender" required>
+						<option value="1">男性</option>
+						<option value="2">女性</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="birthday"><span class="required">＊</span>生日 </label>
+					<input type="date" id="birthday" name="birthday" required>
+				</div>
+
+				<div class="form-group">
+					<label for="phone">電話</label>
+					<input type="tel" id="phone" name="phone">
+				</div>
+
+				<div class="form-group">
+					<label for="address">地址</label>
+					<input type="text" id="address" name="address">
+				</div>
+
+				<div class="form-group">
+					<label for="email"><span class="required">＊</span>Email </label>
+					<input type="email" id="email" name="email" required>
+				</div>
+
+				<div class="form-group">
+					<label for="emergencyContent">緊急聯絡人電話</label>
+					<input type="tel" id="emergencyContent" name="emergencyContent">
+				</div>
+
+				<div class="form-group">
+					<label for="emergencyName">緊急聯絡人姓名</label>
+					<input type="text" id="emergencyName" name="emergencyName">
+				</div>
+
+				<div class="form-group">
+					<label for="relation">關係</label>
+					<select id="relation" name="relation">
+						<option value="1">配偶</option>
+						<option value="2">父母</option>
+						<option value="3">子女</option>
+						<option value="4">祖父母</option>
+						<option value="5">孫子女</option>
+						<option value="6">外祖父母</option>
+						<option value="7">外孫子女</option>
+						<option value="8">曾祖父母</option>
+						<option value="9">外曾祖父母</option>
+						<option value="10">兄弟</option>
+						<option value="11">姊妹</option>
+						<option value="12">甥</option>
+						<option value="13">姪</option>
+						<option value="14">其他親屬</option>
+					</select>
+				</div>
+
+					<div class="form-group">
+						<label for="bloodType">血型</label>
+						<select id="bloodType" name="bloodType">
+							<option value="1">A型</option>
+							<option value="2">B型</option>
+							<option value="3">AB型</option>
+							<option value="4">O型</option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<label for="notes">備註</label>
+						<textarea id="notes" name="notes"></textarea>
+					</div>
+
+					<button type="submit">儲存變更</button>
+				</form>
+			</div>
+
+		</div>
+	</div>
+	
+	<!-- JS -->
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+	<script src="static/js/jquery-3.7.1.min.js"></script>
+	<script src="static/js/wow.min.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/countUp.js/2.0.7/countUp.min.js"></script> -->
+	<script src="static/js/bootstrap-datepicker.js"></script>
+	<script src="static/js/select2.min.js"></script>
+	<script src="static/js/theia-sticky-sidebar.min.js"></script>
+	<script src="static/js/owl.carousel.min.js"></script>
+	<script src="static/js/ion.rangeSlider.min.js"></script>
+	<script src="static/js/raty.min.js"></script>
+	<script src="static/js/slick.min.js"></script>
+	<script src="static/js/jquery.magnific-popup.min.js"></script>
+	<script src="static/js/jquery.counterup.min.js"></script>
+	<script src="static/js/aos.min.js"></script>
+	<script src="static/js/custom.js"></script>
+	<!-- <script src="static/js/alertBell.js"></script> -->
+	<script src="static/js/common_js.js"></script>
+
+	<!-- === Gsap === -->
+	<script src="static/js/gsap.min.js"></script>
+	<script src="static/js/ScrollSmoother.min.js"></script>
+	<script src="static/js/ScrollTrigger.min.js"></script>
+	<script src="static/js/SplitText.min.js"></script>
+	<script src="static/js/gps.js"></script>
+	<script src="static/js/account.js"></script>
+	
+</body>
+
+</html>

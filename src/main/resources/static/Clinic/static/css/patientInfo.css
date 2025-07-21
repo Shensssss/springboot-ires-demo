@@ -1,0 +1,122 @@
+div.container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.top-row {
+    width: 100%;
+    display: flex;
+    gap: 20px; /* 兩個 box 之間的間距 */
+    box-sizing: border-box;
+}
+
+div.box{
+    flex: 1 1 0;
+    padding: 10px;
+    margin: 20px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    box-shadow: 3px 6px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    box-sizing: border-box;
+}
+
+.box .profilePicture {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 100px;
+    height: 100px;
+    border: 2px solid white;
+    /* border-radius: 60%; */
+}
+
+div.record{
+    width: 100%;
+    padding: 10px;
+    margin: 20px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    box-shadow: 3px 6px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    box-sizing: border-box;
+}
+
+p.item{
+    margin: 8px;
+    font-size: 18px;
+}
+
+p.detail{
+    margin: 8px;
+    font-size: 14px;
+}
+
+.-none{
+    display: none;
+}
+
+#edit {
+    position: absolute;
+    top: 10px;
+    right: 10px; 
+    padding: 5px 10px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#noteInput {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+    padding: 8px;
+}
+
+#save{
+    position: absolute;
+    bottom: 10px;
+    right: 10px; 
+    padding: 5px 10px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.appointment-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-family: Arial, sans-serif;
+}
+
+.appointment-table th,
+.appointment-table td {
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    text-align: center;
+}
+
+.appointment-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.appointment-table tbody tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.appointment-table tbody tr:hover {
+    background-color: #e0f7fa;
+}
+
+

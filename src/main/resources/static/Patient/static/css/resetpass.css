@@ -1,0 +1,156 @@
+body {
+  margin: 0;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 360px;
+  width: 200px;
+  background-color: lightgray;
+  padding: 20px;
+  left: 0;
+  border-radius: 10px;
+  }
+.theiaStickySidebar{
+  box-sizing: border-box;
+  /* border: 1px solid red; */
+  position:relative;
+  top: 0;
+  width: 100%;
+  font-weight: 800;
+}
+.leftmenu {
+  display: block;
+  padding: 15px 20px;
+  margin: 20px 0;
+  text-decoration: none;
+  text-align: center;
+  color: #000000;
+  background-color: #ffffff;
+  border-radius: 10px;
+  transition: background-color 0.3s, color 0.3s;
+  font-size: large;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+}
+.leftmenu:hover {
+  background-color: gray;
+  color: white;
+}
+
+
+/*主要內容*/
+* {
+  box-sizing: border-box;
+}
+
+.rectangle-33 {
+  background-color: lightgray;
+  border-radius: 10px;
+  width: 72%;
+  height: 600px;
+  position: absolute;
+  left: 240px;
+  top: 0;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+}
+.div1 {
+  color: #000000;
+  text-align: left;
+  font-size: 24px;
+  font-weight: 400;
+  position: absolute;
+  left: 288px;
+  top: 20px;
+  font-weight: 800;
+}
+.div2 {
+  color: #000000;
+  text-align: left;
+  font-size: 24px;
+  font-weight: 400;
+  position: absolute;
+  left: 303px;
+  top: 120px;
+}
+.red {
+  color: red; /* 設定星號的顏色為紅色 */
+  font-weight: bold; /* 可選，讓星號更突出 */
+}
+
+.div3 {
+  color: #000000;
+  text-align: left;
+  font-size: 24px;
+  font-weight: 400;
+  position: absolute;
+  left: 303px;
+  top: 220px;
+}
+.div4 {
+  color: #000000;
+  text-align: left;
+  font-size: 24px;
+  font-weight: 400;
+  position: absolute;
+  left: 255px;
+  top: 320px;
+}
+.group {
+  margin: 0;
+  width: 100%;
+  display: flex; /* 使用 Flexbox 進行布局 */
+  flex-direction: column; /* 子元素垂直排列 */
+  left: 410px;
+  gap: 40px; /* 增加上下元素的間距 */
+  position: absolute; /* 確保內部定位的子元素作用範圍正常 */
+  top: 110px;
+}
+.group input {
+  height: 60px;
+  width: 50%; /* 保留寬度比例 */
+  font-size: 22px;
+  border-radius: 10px; /* 保留圓角 */
+  padding: 20px;
+  border: 1px solid #000000;
+  margin-bottom: 0; 
+  position: relative; /* 確保 input 元素不會重疊 */
+}
+
+.div6 {
+  color: #000000;
+  background-color: white;
+  text-align:center;
+  font-size: 24px;
+  font-weight: 800;
+  position: absolute;
+  left: calc(68% - 70px);
+  top: 520px;
+  width: 100px;
+  height: 60px;
+  border-radius: 10px;
+}
+.div6:hover {
+  background: gray; /* 背景變成灰色 */
+  color: white; /* 文字變成白色 */
+}
+.div7 {
+  color: #000000;
+  background-color: white;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 800;
+  position: absolute;
+  left: calc(68% + 70px);
+  top: 520px;
+  width: 100px;
+  height: 60px;
+  border-radius: 10px;
+}
+.div7:hover {
+  background: gray; /* 背景變成灰色 */
+  color: white; /*文字變成白色*/
+}
+
+

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>註冊畫面</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .register-form {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+    .register-form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+    .submit-btn {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .submit-btn:hover {
+      background-color: #45a049;
+    }
+
+    /* 新增驗證碼容器樣式 */
+.verification-group {
+    display: flex;
+    gap: 10px; /* 輸入框和按鈕之間的間距 */
+    margin-bottom: 15px;
+    align-items: center; /* 垂直方向置中對齊 */
+}
+/* 設定驗證碼輸入框的寬度 */
+.verification-input {
+    flex-grow: 1; /* 讓輸入框盡可能佔滿剩餘空間 */
+    width: 50%; /* 設定初始寬度為容器的一半，但會被 flex-grow 調整 */
+    padding: 8px; /* 確保內邊距與其他輸入框一致 */
+    box-sizing: border-box; /* 確保寬高包含內邊距和邊框 */
+}
+/* 設定發送驗證碼按鈕的樣式 */
+.verification-button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    height: auto; /* 移除固定高度，讓高度根據內容和內邊距調整 */
+}
+.verification-button:hover {
+    background-color: #0056b3;
+}
+
+.remember-me-group {
+    text-align: left; /* 確保內容靠左對齊 */
+    margin-bottom: 15px;
+}
+
+.remember-me-group input[type="checkbox"] {
+    /* 你可以調整 checkbox 的樣式，例如間距 */
+    margin-right: 5px;
+    vertical-align: middle; /* 讓 checkbox 與文字垂直居中對齊 */
+}
+
+.remember-me-group label {
+    display: inline-block; /* 讓 label 可以與 checkbox 並排顯示 */
+    vertical-align: middle; /* 讓文字與 checkbox 垂直居中對齊 */
+    font-size: 12px;
+}
+          
+
+
+  </style>
+</head>
+<body>
+
+<!-- 註冊表單開始 -->
+<form class="register-form"  method="POST">
+  <h1><img src="static/picture/ires.png" style="display: block; margin: auto; margin-top: 10px;"></h1>
+  <h2 style="font-size: 14px; font-family:Verdana, Geneva, Tahoma, sans-serif;color: cadetblue; margin-top: 20px;">診所機構註冊</h2>
+  
+  
+  <!-- 名字欄位 -->
+   <div class="form-group">
+  <!--<label for="name">機構名稱</label>-->
+    <input type="text" id="name" name="name"  placeholder="機構名稱" required>
+  </div>
+
+  <div class="form-group">
+  <!--<label for="org_code">機構代碼</label>-->
+  <input type="text" id="org_code" name="org_code" placeholder="機構代碼" required>
+</div>
+
+<!--  新增：機構電話欄位 -->
+<div class="form-group">
+  <!--<label for="phone">機構電話</label>-->
+  <input type="tel" id="phone" name="phone" placeholder="機構電話" required>
+</div>
+<!-- 地址（拆成 城市、鄉鎮/區、道路/經緯度） -->
+<div class="form-group">
+  <input type="text" id="address_city" name="address_city" placeholder="城市" required>
+</div>
+<div class="form-group">
+  <input type="text" id="address_town" name="address_town" placeholder="鄉鎮/區" required>
+</div>
+<div class="form-group">
+  <input type="text" id="address_road" name="address_road" placeholder="道路" required>
+</div>
+<div class="form-group">
+  <input type="number" id="longitude" name="longitude" placeholder="經度"  step="any" readonly>
+</div>
+<div class="form-group">
+  <input type="number" id="latitude" name="latitude" placeholder="緯度"  step="any" readonly>
+  <button class="btn btn-primary" type="button" id="get_position">取得經緯度</button>
+</div>
+
+
+<!-- 機構地址（新增） 
+  <div class="form-group">
+    <input type="text" id="address" name="address" placeholder="機構地址" required>
+  </div>-->
+
+  <!-- Email欄位 -->
+  <div class="form-group">
+    <!--<label for="email">電子郵件</label>-->
+    <input type="email" id="email" name="email" placeholder="電子郵件" required>
+  </div>
+
+  <!-- 密碼欄位 -->
+  <div class="form-group" style="position: relative;">
+    <!--<label for="password">密碼</label>-->
+    <input type="password" id="password" name="password" placeholder="密碼" required>
+  
+    <!-- 眼睛圖示 -->
+  <span id="toggle-password" style="
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 16px;
+  ">👁️‍🗨️</span>
+</div>
+
+<!--  確認密碼欄位（含眼睛圖示）-->
+<div class="form-group" style="position: relative;">
+  <input type="password" id="confirm-password" name="confirm_password" placeholder="確認密碼" required style="padding-right: 35px;">
+  <span id="toggle-confirm-password" style="
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 16px;
+  ">👁️‍🗨️</span>
+</div>
+<div>
+  <label for="image">診所照片: </label>
+  <input type="file" name="image" id="image">
+  <img id="img" style="max-width: 100%; margin-top: 10px;">
+</div>
+
+<!--<div class="verification-group">
+    <input type="text" id="verification-code" name="verification_code" class="verification-input" placeholder="驗證碼" required>
+    <button type="button" class="verification-button">發送驗證碼</button>
+</div>-->
+
+<!--<div class="remember-me-group">
+    <input type="checkbox" id="remember-me" name="remember_me">
+    <label for="remember-me">保持登入</label>
+</div>-->
+
+  <!-- 送出按鈕 -->
+  <button type="submit" class="submit-btn">註冊</button>
+  <div id="msg"></div>
+  <h3 style="font-size: 10px; font-family:'Times New Roman', Times, serif;text-align: center; bottom: 10px;">待管理員審核後，使得登入使用</h3>
+  
+</form>
+<!-- 註冊表單結束 -->
+
+
+
+<script>
+//經緯度 
+    
+  document.getElementById("get_position").addEventListener("click", function () {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      const longitude = position.coords.longitude;
+      const latitude = position.coords.latitude;
+
+      // 填進 input 欄位
+      document.getElementById("longitude").value = longitude.toFixed(6);
+      document.getElementById("latitude").value = latitude.toFixed(6);
+    }, function (error) {
+      alert("無法取得定位：" + error.message);
+    });
+  } else {
+    alert("你的瀏覽器不支援地理定位");
+  }
+});
+
+</script>
+
+<script>
+  const passwordField = document.getElementById('password');
+  const confirmPasswordField = document.getElementById('confirm-password');
+  const togglePassword = document.getElementById('toggle-password');
+  const toggleConfirmPassword = document.getElementById('toggle-confirm-password');
+  
+
+  togglePassword.addEventListener('click', function () {
+    const isVisible = passwordField.type === 'text';
+    passwordField.type = isVisible ? 'password' : 'text';
+  });
+
+  toggleConfirmPassword.addEventListener('click', function () {
+    const isVisible = confirmPasswordField.type === 'text';
+    confirmPasswordField.type = isVisible ? 'password' : 'text';
+  });
+  const profilePicture = document.getElementById('image');
+
+  image.addEventListener('change', () => {
+    const file = image.files[0];
+    if (file) {
+      document.getElementById('img').src = URL.createObjectURL(file);
+    }
+  });
+
+  const clinicName = document.getElementById('name');
+  const agencyId = document.getElementById('org_code');
+  const phone = document.getElementById('phone');
+  const addressCity = document.getElementById('address_city');
+  const addressTown = document.getElementById('address_town');
+  const addressRoad = document.getElementById('address_road');
+  const longitude = document.getElementById('longitude');
+  const latitude = document.getElementById('latitude');
+  const account = document.getElementById('email');
+  const password = document.getElementById('password');
+  const confirmPassword = document.getElementById('confirm-password');
+  const form = document.querySelector('form');
+  const msg = document.getElementById('msg');
+  const btn1 = document.querySelector('.submit-btn');
+  const inputs = document.querySelectorAll('input');
+  
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    msg.textContent = '';
+    msg.className = '';
+
+    // 驗證資料
+    if (!clinicName.value || clinicName.value.length < 1 || clinicName.value.length > 20) {
+      alert('診所名字長度需介於 1~20 字元');
+      return;
+    }
+    if (!agencyId.value || agencyId.value.length !== 10) {
+      alert('機構代碼長度需為 10');
+      return;
+    }
+    if (!phone.value || phone.value.length !== 10) {
+      alert('電話長度需為 10');
+      return;
+    }
+    if (!addressCity.value || addressCity.value.length !== 3) {
+      alert('城市長度需為 3');
+      return;
+    }
+    if (!addressTown.value || addressTown.value.length < 2 || addressTown.value.length > 4) {
+      alert('鄉鎮長度需介於 2~4');
+      return;
+    }
+    if (!addressRoad.value || addressRoad.value.length < 1 || addressRoad.value.length > 50) {
+      alert('道路長度需介於 1~50');
+      return;
+    }
+
+    const longitudeVal = parseFloat(longitude.value);
+    const latitudeVal = parseFloat(latitude.value);
+
+    if (isNaN(longitudeVal) || longitudeVal < -180 || longitudeVal > 180) {
+      alert('經度需介於 -180 ~ 180');
+      return;
+    }
+
+    if (isNaN(latitudeVal) || latitudeVal < -90 || latitudeVal > 90) {
+      alert('緯度需介於 -90 ~ 90');
+      return;
+    }
+
+    if (!account.value || account.value.length < 1 || account.value.length > 50) {
+      alert('Email 長度需介於 1~50');
+      return;
+    }
+    if (!password.value || password.value.length < 1 || password.value.length > 50) {
+      alert('密碼長度需介於 1~50');
+      return;
+    }
+    if (password.value !== confirmPassword.value) {
+      alert('密碼與確認密碼不一致');
+      return;
+    }
+
+    // 提交資料函式
+    function submitForm(imageBase64) {
+      fetch('/ires-system/clinic/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          clinicName: clinicName.value,
+          agencyId: agencyId.value,
+          phone: phone.value,
+          addressCity: addressCity.value,
+          addressTown: addressTown.value,
+          addressRoad: addressRoad.value,
+          account: account.value,
+          longitude: parseFloat(longitude.value),  
+          latitude: parseFloat(latitude.value),
+          password: password.value,
+          profilePicture: imageBase64
+        })
+      })
+        .then(resp => resp.json())
+        .then(body => {
+          const { successful, message } = body;
+          if (successful) {
+            inputs.forEach(input => input.disabled = true);
+            btn1.disabled = true;
+            msg.className = 'info';
+            alert('註冊成功，將導向登入頁');
+            setTimeout(() => {0
+              location.href = 'http://localhost:8080/ires-system/Clinic/login.html';
+            }, 1500);
+          } else {
+            msg.className = 'error';
+            msg.textContent = message || '註冊失敗';
+          }
+        })
+        .catch(error => {
+          msg.className = 'error';
+          msg.textContent = '連線失敗：' + error.message;
+        });
+    }
+
+   
+
+
+
+
+    // 圖片處理
+    if (image.files.length > 0) {
+      const file = image.files[0];
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const imageBase64 = e.target.result.split(',')[1];
+        submitForm(imageBase64);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      submitForm('');
+    }
+  });
+</script>
+
+</body>
+</html>
+  

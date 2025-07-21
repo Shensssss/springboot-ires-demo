@@ -1,0 +1,1734 @@
+/*
+DocWala - Doctor Listing & Consultation HTML Template
+Author: Themeparker
+Version: 1.0
+*/
+/* ------------------------------------------------
+ - General Styles
+ - Page Loader
+ - Utilities
+ - Components
+ - Navbar
+ - Hero Header
+ - Product
+ - Product Details
+ - Footer
+ - Doctor Card List
+ - Doctor details page
+ - About Page
+ - Department
+ - Blog Page
+ - Blog Details
+ - Contact page
+ - Sign up & log in
+ - Hospital list Page
+ - Hospital details
+ - Donation Page
+ - Offline Payment
+ - Empty Cart
+ - Hospital List With Map
+ - To Top
+ - Registration Page
+------------------------------------------------ */
+/* ----------------------------------------------------------------
+    -   General Styles
+----------------------------------------------------------------- */
+:root {
+  --blog-post-bg-color: rgba(22, 117, 77, .9);
+  --footer-bg-color: #2c3038;
+  --bs-border-color-translucent: #dee2e6;
+  --bs-link-color: #0e5033;
+  --bs-primary: #16754D;
+  --bs-primary-rgb: 22, 117, 77;
+  --bs-body-font-weight: 500;
+}
+
+body {
+  color: #555a64;
+  font-size: 14px;
+  /* font-size: 15px; */
+  /* font-family: 'Poppins', sans-serif; */
+  font-family: 'Quicksand', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #2c3038;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+@media(min-width: 576px) and (max-width: 767px) {
+
+  .container {
+    max-width: 100%;
+  }
+}
+
+/* -----------------------------------------------------------------
+    -  Page Loader
+----------------------------------------------------------------- */
+
+.preloader {
+  display: inline-block;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: 1568ms linear infinite container-rotate;
+  animation: 1568ms linear infinite container-rotate;
+}
+
+.badge {
+  font-size: 20px;
+  padding: 0.3em 0.55em;
+}
+
+
+@-webkit-keyframes container-rotate {
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg)
+  }
+}
+
+@keyframes container-rotate {
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg)
+  }
+}
+
+@-webkit-keyframes fill-unfill-rotate {
+  12.5% {
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg)
+  }
+
+  25% {
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg)
+  }
+
+  37.5% {
+    -webkit-transform: rotate(405deg);
+    transform: rotate(405deg)
+  }
+
+  50% {
+    -webkit-transform: rotate(540deg);
+    transform: rotate(540deg)
+  }
+
+  62.5% {
+    -webkit-transform: rotate(675deg);
+    transform: rotate(675deg)
+  }
+
+  75% {
+    -webkit-transform: rotate(810deg);
+    transform: rotate(810deg)
+  }
+
+  87.5% {
+    -webkit-transform: rotate(945deg);
+    transform: rotate(945deg)
+  }
+
+  to {
+    -webkit-transform: rotate(1080deg);
+    transform: rotate(1080deg)
+  }
+}
+
+@keyframes fill-unfill-rotate {
+  12.5% {
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg)
+  }
+
+  25% {
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg)
+  }
+
+  37.5% {
+    -webkit-transform: rotate(405deg);
+    transform: rotate(405deg)
+  }
+
+  50% {
+    -webkit-transform: rotate(540deg);
+    transform: rotate(540deg)
+  }
+
+  62.5% {
+    -webkit-transform: rotate(675deg);
+    transform: rotate(675deg)
+  }
+
+  75% {
+    -webkit-transform: rotate(810deg);
+    transform: rotate(810deg)
+  }
+
+  87.5% {
+    -webkit-transform: rotate(945deg);
+    transform: rotate(945deg)
+  }
+
+  to {
+    -webkit-transform: rotate(1080deg);
+    transform: rotate(1080deg)
+  }
+}
+
+@-webkit-keyframes left-spin {
+
+  from,
+  to {
+    -webkit-transform: rotate(130deg);
+    transform: rotate(130deg)
+  }
+
+  50% {
+    -webkit-transform: rotate(-5deg);
+    transform: rotate(-5deg)
+  }
+}
+
+@keyframes left-spin {
+
+  from,
+  to {
+    -webkit-transform: rotate(130deg);
+    transform: rotate(130deg)
+  }
+
+  50% {
+    -webkit-transform: rotate(-5deg);
+    transform: rotate(-5deg)
+  }
+}
+
+@-webkit-keyframes right-spin {
+
+  from,
+  to {
+    -webkit-transform: rotate(-130deg);
+    transform: rotate(-130deg)
+  }
+
+  50% {
+    -webkit-transform: rotate(5deg);
+    transform: rotate(5deg)
+  }
+}
+
+@keyframes right-spin {
+
+  from,
+  to {
+    -webkit-transform: rotate(-130deg);
+    transform: rotate(-130deg)
+  }
+
+  50% {
+    -webkit-transform: rotate(5deg);
+    transform: rotate(5deg)
+  }
+}
+
+
+/* -----------------------------------------------------------------
+    -  Utilities
+----------------------------------------------------------------- */
+
+/* Z index ------  */
+.z-index-1 {
+  z-index: 1;
+}
+
+/* Background --- */
+
+.background-size-cover {
+  background-size: cover;
+}
+
+.background-no-repeat {
+  background-repeat: no-repeat;
+}
+
+/* Shadow -------- */
+.shadow {
+  -webkit-box-shadow: 2px 2px 20px 0 rgb(82 66 47 / 12%) !important;
+  box-shadow: 2px 2px 20px 0 rgb(82 66 47 / 12%) !important;
+}
+
+
+/* Letter spacing ----- */
+.l-spacing-1 {
+  letter-spacing: .1rem;
+}
+
+
+/* Text Color ------------ */
+
+.text-muted {
+  color: #999999 !important;
+}
+
+.text-inherit {
+  color: inherit !important;
+}
+
+.ws-nowrap {
+  white-space: nowrap;
+}
+
+/*Font weight ---------*/
+
+.fw-medium {
+  font-weight: 500 !important;
+}
+
+/* Font size ------------------ */
+
+.fs-12 {
+  font-size: 12px !important;
+}
+
+.fs-13 {
+  font-size: 13px !important;
+}
+
+.fs-15 {
+  font-size: 15px !important;
+}
+
+.fs-16 {
+  font-size: 16px !important;
+}
+
+.fs-17 {
+  font-size: 17px !important;
+}
+
+.fs-18 {
+  font-size: 18px !important;
+}
+
+.fs-19 {
+  font-size: 19px !important;
+}
+
+.fs-21 {
+  font-size: 21px !important;
+}
+
+.fs-25 {
+  font-size: 25px !important;
+}
+
+/*Background color -----------------*/
+
+/* Docs css -----------------*/
+.cs-content {
+  grid-area: content;
+  min-width: 1px;
+}
+
+.cs-content> :target {
+  padding-top: 5rem;
+  margin-top: -5rem;
+}
+
+.cs-content>h2:not(:first-child) {
+  margin-top: 3rem;
+}
+
+.cs-content>h3 {
+  margin-top: 2rem;
+}
+
+.cs-content>ul li {
+  margin-bottom: 0.25rem;
+}
+
+.cs-content>ul li>p~ul {
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* -----------------------------------------------------------------
+    -  components
+----------------------------------------------------------------- */
+/* Form Checkbox --------- */
+.form-check {
+  padding-left: 2em;
+}
+
+.form-check-input {
+  width: 1.5em;
+  height: 1.5em;
+  margin-top: 0;
+}
+
+.form-check .form-check-input {
+  margin-left: -2em;
+}
+
+.form-check-input:checked {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+
+.form-check-input:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.form-check-input[type=checkbox] {
+  border-radius: .4em;
+}
+
+.form-check-label {
+  font-weight: 600;
+}
+
+/* Form Control & Form Select --------- */
+
+.form-group {
+  position: relative;
+}
+
+.form-control,
+.form-select {
+  font-size: 15px;
+  font-weight: 500;
+  height: 46px;
+  border-radius: 0.5rem;
+}
+
+textarea.form-control {
+  height: auto;
+}
+
+
+.form-select-sm {
+  font-size: .875rem;
+  border-radius: 0.4rem;
+  height: 2.237rem;
+}
+
+.form-group .form-control,
+.form-group .form-select {
+  height: 52px;
+  padding: 0 20px;
+}
+
+.form-group .form-select {
+  padding-right: 40px;
+}
+
+.form-control.password {
+  padding-right: 45px;
+}
+
+.form-group label {
+  position: absolute;
+  top: -11px;
+  left: 10px;
+  pointer-events: none;
+  z-index: 4;
+  background: #fff;
+  padding: 0 10px;
+  font-weight: 600;
+}
+
+.form-group textarea.form-control {
+  height: auto;
+  padding: 15px 20px;
+}
+
+.form-control:hover,
+.form-select:hover {
+  -webkit-box-shadow: inset 0 0 0 1px var(--bs-primary);
+  box-shadow: inset 0 0 0 1px var(--bs-primary);
+}
+
+
+@-webkit-keyframes autofill {
+  to {
+    color: #212529;
+    background-color: #fff;
+    border-color: #e4e4e4;
+  }
+}
+
+.form-control:-webkit-autofill {
+  -webkit-animation-name: autofill;
+  -webkit-animation-fill-mode: both;
+}
+
+.form-control:focus,
+.form-select:focus {
+  -webkit-box-shadow: inset 0 0 0 1px var(--bs-primary);
+  box-shadow: inset 0 0 0 1px var(--bs-primary);
+  border-color: transparent
+}
+
+.required:after {
+  content: "*";
+  position: relative;
+  font-size: inherit;
+  color: rgba(var(--bs-danger-rgb)) !important;
+  padding-left: 0.15rem;
+  font-weight: 600;
+}
+
+.password+.far {
+  top: 50%;
+  right: 10px;
+  position: absolute;
+  color: #666;
+  cursor: pointer;
+  pointer-events: all;
+  -webkit-transform: translate(-5px, -50%);
+  -ms-transform: translate(-5px, -50%);
+  transform: translate(-5px, -50%);
+  font-size: 14px;
+}
+
+/* Buttons --------- */
+
+.btn {
+  --bs-btn-padding-x: 1rem;
+  --bs-btn-padding-y: 0.625rem;
+  --bs-btn-border-radius: 0.5rem;
+}
+
+
+.btn-lg {
+  --bs-btn-padding-y: 0.739rem;
+  --bs-btn-padding-x: 1.5rem;
+  --bs-btn-font-size: 1.1rem;
+  --bs-btn-border-radius: 0.6rem;
+}
+
+
+.btn-sm {
+  --bs-btn-padding-y: 0.4rem;
+  --bs-btn-padding-x: 0.5rem;
+  --bs-btn-font-size: 0.875rem;
+  --bs-btn-border-radius: 0.4rem;
+}
+
+/*Button primary*/
+.btn-primary {
+  --bs-btn-bg: #16754D;
+  --bs-btn-border-color: #16754D;
+  --bs-btn-hover-bg: #0e5839;
+  --bs-btn-hover-border-color: #0e5839;
+  --bs-btn-focus-shadow-rgb: none;
+  --bs-btn-active-bg: #0e5839;
+  --bs-btn-active-border-color: #0e5839;
+  --bs-btn-disabled-bg: #16754D;
+  --bs-btn-disabled-border-color: #16754D;
+  
+}
+
+.btn-outline-default {
+  --bs-btn-color: #16754D;
+  --bs-btn-bg: #fff;
+  --bs-btn-border-color: #ced4da;
+  --bs-btn-hover-color: #16754D;
+  --bs-btn-hover-bg: #cdcdcd;
+  --bs-btn-hover-border-color: #c6c7c8;
+  --bs-btn-focus-shadow-rgb: 211,212,213;
+  --bs-btn-active-color: #16754D;
+  --bs-btn-active-bg: #e7e7e7;
+  --bs-btn-active-border-color: #babbbc;
+  --bs-btn-active-shadow: inset 0 3px 5px
+rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #16754D;
+  --bs-btn-disabled-bg: #fff;
+  --bs-btn-disabled-border-color: #ced4da;
+}
+
+/* Progress --------- */
+
+
+/* Underline --------- */
+.underline:after {
+  content: "";
+  position: absolute;
+  display: block;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  left: 50%;
+  bottom: -.1em;
+  width: 110%;
+  height: .3em;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.underline:after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 205 9.37'%3E%3Cpath fill='%2316754D' d='M202.47,9.37A1191.26,1191.26,0,0,0,1.79,7.48,1.67,1.67,0,0,1,0,5.92H0A1.76,1.76,0,0,1,1.63,4.21c67-5.71,133.83-5.43,200.8-.27A2.75,2.75,0,0,1,205,6.88h0A2.6,2.6,0,0,1,202.47,9.37Z'/%3E%3C/svg%3E");
+}
+
+/* List Style (checked) --------- */
+
+/* Select2 --------- */
+
+/* Country Select -------------- */
+
+/* Star Rating ---------- */
+.star-rating {
+  font-size: 12px;
+}
+
+.star-rating i {
+  margin-right: 2px;
+}
+
+.star-rating__box i {
+  height: 28px;
+  width: 28px;
+}
+
+/* Filter Summary --------- */
+
+/* Breadcrumb ----- */
+
+/* Pagination ------- */
+
+.pagination .pages>li {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 34px;
+  text-align: center;
+}
+
+.pagination .pages>li>a {
+  display: block;
+  width: 36px;
+  height: 36px;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  color: #606975;
+  line-height: 34px;
+  text-decoration: none;
+}
+
+.pagination .pages>li.active>a {
+  border-color: var(--bs-primary);
+  background-color: var(--bs-primary);
+  color: #fff;
+}
+
+/*Input Spinner-------------*/
+
+/* Nav tabs -------------*/
+
+.nav .nav-item:not(:last-child) {
+  margin-right: 1.5rem;
+}
+
+.nav-tabs .nav-link {
+  border: 0;
+  border-radius: 0;
+  color: #686d76;
+  font-weight: 600;
+  position: relative;
+  padding: 8px 0;
+  padding: 0.7rem 0;
+  border-bottom: 3px solid transparent;
+}
+
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link:hover {
+  color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  color: var(--bs-primary);
+  border-bottom-color: var(--bs-primary);
+  background-color: transparent;
+}
+
+/* Collapsed -------------*/
+
+/* Social link -------------*/
+
+/* .social-links a {
+  width: 35px;
+  height: 35px;
+  background-color: #1b4e9b;
+  margin: 0 4px 4px 0;
+}
+
+.social-links a:first-child {
+  margin-left: 0;
+}
+
+.social-links a.tw {
+  background-color: #00aeef;
+}
+
+.social-links a.ins {
+  background-color: #E1306C;
+}
+
+.social-links a.pr {
+  background-color: #c8232c;
+}
+
+.social-links a.li {
+  background-color: #0077b5;
+} */
+
+/* Angled -------------*/
+
+/* Play Store Button -------------*/
+
+/* Tags -------------*/
+
+/* Range Slider --------------- */
+
+/* -----------------------------------------------------------------
+    -  Navbar
+----------------------------------------------------------------- */
+
+.navbar {
+  padding: .8rem 0;
+  z-index: 9;
+  /* --bs-navbar-color: #2c3038; */
+  --bs-navbar-color: #2f2e41;
+  --bs-navbar-nav-link-padding-x: 0.7rem;
+  --bs-navbar-active-color: var(--bs-primary);
+  --bs-navbar-hover-color: var(--bs-primary);
+  -webkit-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+@media(min-width: 992px) {
+  .navbar {
+    --bs-navbar-color: #2c3038;
+  }
+
+}
+
+.navbar-nav {
+  --bs-nav-link-padding-y: 0.625rem;
+}
+
+/*Navbar Brand ------*/
+.navbar-brand img {
+  height: 29px;
+}
+
+@media(min-width: 576px) {
+  .navbar-brand img {
+    height: 40px;
+  }
+}
+
+.nav-link {
+  font-weight: 700;
+  font-size: 0.969rem;
+  border-radius: 0.5rem;
+}
+
+
+/* Dropdown Menu ------- */
+
+@media(max-width: 991px) {
+
+  /*Navbar collaps*/
+  .navbar-collapse {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    left: 1rem;
+    z-index: 1050;
+    padding: 1.5rem;
+    height: auto !important;
+    max-height: calc(100vh - 2rem);
+    background-color: #fff;
+    border-radius: .375rem;
+    -webkit-box-shadow: 0 1.5rem 4rem rgba(22, 28, 45, .15);
+    box-shadow: 0 1.5rem 4rem rgba(22, 28, 45, .15);
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    -webkit-transition-property: opacity, -webkit-transform;
+    transition-property: opacity, -webkit-transform;
+    -o-transition-property: opacity, transform;
+    transition-property: opacity, transform;
+    transition-property: opacity, transform, -webkit-transform;
+    -webkit-transform-origin: top right;
+    -ms-transform-origin: top right;
+    transform-origin: top right
+  }
+
+  .navbar-collapse.show {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1)
+  }
+
+  /*navbar collapse toggler icon*/
+
+  /*navbar link*/
+  .navbar-nav .nav-link {
+    padding: .5rem 0;
+    font-weight: 600;
+  }
+
+  /*navbar collapsible sub-arrow*/
+
+  /*Navbar dropdown menu*/
+
+}
+
+@media(min-width: 992px) {
+
+  /*Navbar dropdown menu*/
+
+  @keyframes slideIn {
+    0% {
+      -webkit-transform: translateY(1rem);
+      transform: translateY(1rem);
+      opacity: 0;
+    }
+
+    100% {
+      -webkit-transform: translateY(0rem);
+      transform: translateY(0rem);
+      opacity: 1;
+    }
+
+    0% {
+      -webkit-transform: translateY(1rem);
+      transform: translateY(1rem);
+      opacity: 0;
+    }
+  }
+
+  @-webkit-keyframes slideIn {
+    0% {
+      -webkit-transform: transform;
+      -webkit-opacity: 0;
+    }
+
+    100% {
+      -webkit-transform: translateY(0);
+      -webkit-opacity: 1;
+    }
+
+    0% {
+      -webkit-transform: translateY(1rem);
+      -webkit-opacity: 0;
+    }
+  }
+}
+
+/*Menu badge ----- */
+
+/*navbar toggle ----- */
+.navbar-toggler {
+  border-radius: 0.5rem;
+  -webkit-transition: all .25s cubic-bezier(.02, .01, .47, 1);
+  -o-transition: all .25s cubic-bezier(.02, .01, .47, 1);
+  transition: all .25s cubic-bezier(.02, .01, .47, 1);
+  height: 46px;
+  border: 2px solid var(--bs-primary);
+  background-color: #fff;
+  font-size: 15px;
+  padding: 0 10px;
+  font-weight: 600;
+  color: var(--bs-primary);
+}
+
+.navbar-toggler:hover {
+  color: #fff;
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+
+/* Cart Button ------- */
+
+/* Color Change Button  */
+
+/*------------------------------------------------------------------------------
+  - Hero Header
+------------------------------------------------------------------------------*/
+
+
+.profile-header:before {
+  content: '';
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  /* background-color: rgba(0, 0, 0, 0.3); */
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  /* background: rgba(0, 0, 0, 0.3) url(../img/pattern-white.svg) repeat;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 70%) transparent;
+    background-image: url(../img/pattern-white.svg) repeat;
+ */
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+  /* background-image: url("../img/pattern-white.svg"), linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 70%); W3C */
+
+}
+
+/* Oblique -------------------- */
+
+/* Header Search Tabs -------------------- */
+
+
+/* Header Search Box ---------------------*/
+
+/* Header Search Input ---------------------*/
+
+/* Search Suggestion List --------------------- */
+
+/* Tags ----------------------*/
+
+/*------------------------------------------------------------------------------
+  - Product
+------------------------------------------------------------------------------*/
+
+
+.speciality-title,
+.entry-title,
+.h-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.speciality-title {
+  height: 44px;
+}
+
+/*------------------------------------------------------------------------------
+  - Product Details
+------------------------------------------------------------------------------*/
+
+/* Product details header --------------*/
+
+/* Product Slick Slider --------------*/
+
+/* wishlist ---------------*/
+
+/* Delivery area ---------------*/
+
+/*Product video button-------------*/
+
+/*------------------------------------------------------------------------------
+  - Footer
+------------------------------------------------------------------------------*/
+
+
+/* Appointment ------ */
+
+/* Sub Footer ----- */
+
+/*Dark footer-----*/
+
+/* -----------------------------------------------------------------
+    -  Doctor Card List
+----------------------------------------------------------------- */
+
+/* Doctor Card ----------- */
+
+.doctor-avatar {
+  height: 90px;
+  width: 90px;
+}
+
+@media(min-width:576px) {
+  .doctor-avatar {
+    height: 110px;
+    width: 110px;
+  }
+}
+
+.doctor-avatar img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+/*Online dot ----------- */
+
+.online {
+  top: 17px;
+  right: 12px;
+}
+
+.online .heartbit {
+  position: absolute;
+  top: -20px;
+  right: -4px;
+  height: 30px;
+  width: 30px;
+  z-index: 10;
+  /* border: 5px solid #62bd19; */
+  background-color: #62bd19;
+  border-radius: 70px;
+  -moz-animation: heartbit 1s ease-out;
+  -moz-animation-iteration-count: infinite;
+  -o-animation: heartbit 1s ease-out;
+  -o-animation-iteration-count: infinite;
+  -webkit-animation: heartbit 1s ease-out;
+  -webkit-animation-iteration-count: infinite;
+  animation: heartbit 1s ease-out;
+  animation-iteration-count: infinite;
+}
+
+.online .point {
+  width: 10px;
+  height: 10px;
+  border-radius: 30px;
+  background-color: #62bd19;
+  position: absolute;
+  right: 6px;
+  top: -10px;
+}
+
+@-webkit-keyframes heartbit {
+  0% {
+    -webkit-transform: scale(0);
+    opacity: 0.0;
+  }
+
+  25% {
+    -webkit-transform: scale(0.1);
+    opacity: 0.1;
+  }
+
+  50% {
+    -webkit-transform: scale(0.5);
+    opacity: 0.3;
+  }
+
+  75% {
+    -webkit-transform: scale(0.8);
+    opacity: 0.5;
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    opacity: 0.0;
+  }
+}
+
+@keyframes heartbit {
+  0% {
+    -webkit-transform: scale(0);
+    opacity: 0.0;
+  }
+
+  25% {
+    -webkit-transform: scale(0.1);
+    opacity: 0.1;
+  }
+
+  50% {
+    -webkit-transform: scale(0.5);
+    opacity: 0.3;
+  }
+
+  75% {
+    -webkit-transform: scale(0.8);
+    opacity: 0.5;
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    opacity: 0.0;
+  }
+}
+
+/* -----------------------------------------------------------------
+    -  Doctor details page
+----------------------------------------------------------------- */
+
+/* Avatar --------- */
+
+/* -----------------------------------------------------------------
+    -  About Page
+----------------------------------------------------------------- */
+
+/* -----------------------------------------------------------------
+    - Work Process
+----------------------------------------------------------------- */
+
+
+/*box-loader --------- */
+
+/* Rotation -------------------*/
+
+@-webkit-keyframes rotation {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  25% {
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }
+
+  50% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+
+  75% {
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotation {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  25% {
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }
+
+  50% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+
+  75% {
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes bar-top {
+  0% {
+    -webkit-transform: scale(0, 1);
+    transform: scale(0, 1);
+  }
+
+  12.5% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+
+  87.5% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+
+  100% {
+    -webkit-transform: scale(0, 1);
+    transform: scale(0, 1);
+  }
+}
+
+@keyframes bar-top {
+  0% {
+    -webkit-transform: scale(0, 1);
+    transform: scale(0, 1);
+  }
+
+  12.5% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+
+  87.5% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+
+  100% {
+    -webkit-transform: scale(0, 1);
+    transform: scale(0, 1);
+  }
+}
+
+@-webkit-keyframes bar-right {
+  0% {
+    -webkit-transform: scale(1, 0);
+    transform: scale(1, 0);
+  }
+
+  12.5% {
+    -webkit-transform: scale(1, 0);
+    transform: scale(1, 0);
+  }
+
+  25% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+
+  75% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+
+  87.5% {
+    -webkit-transform: scale(1, 0);
+    transform: scale(1, 0);
+  }
+
+  100% {
+    -webkit-transform: scale(1, 0);
+    transform: scale(1, 0);
+  }
+}
+
+@keyframes bar-right {
+  0% {
+    -webkit-transform: scale(1, 0);
+    transform: scale(1, 0);
+  }
+
+  12.5% {
+    -webkit-transform: scale(1, 0);
+    transform: scale(1, 0);
+  }
+
+  25% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+
+  75% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+
+  87.5% {
+    -webkit-transform: scale(1, 0);
+    transform: scale(1, 0);
+  }
+
+  100% {
+    -webkit-transform: scale(1, 0);
+    transform: scale(1, 0);
+  }
+}
+
+@-webkit-keyframes bar-bottom {
+  0% {
+    -webkit-transform: scale(0, 1);
+    transform: scale(0, 1);
+  }
+
+  25% {
+    -webkit-transform: scale(0, 1);
+    transform: scale(0, 1);
+  }
+
+  37.5% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+
+  62.5% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+
+  75% {
+    -webkit-transform: scale(0, 1);
+    transform: scale(0, 1);
+  }
+
+  100% {
+    -webkit-transform: scale(0, 1);
+    transform: scale(0, 1);
+  }
+}
+
+@keyframes bar-bottom {
+  0% {
+    -webkit-transform: scale(0, 1);
+    transform: scale(0, 1);
+  }
+
+  25% {
+    -webkit-transform: scale(0, 1);
+    transform: scale(0, 1);
+  }
+
+  37.5% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+
+  62.5% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+
+  75% {
+    -webkit-transform: scale(0, 1);
+    transform: scale(0, 1);
+  }
+
+  100% {
+    -webkit-transform: scale(0, 1);
+    transform: scale(0, 1);
+  }
+}
+
+@-webkit-keyframes bar-left {
+  0% {
+    -webkit-transform: scale(1, 0);
+    transform: scale(1, 0);
+  }
+
+  37.5% {
+    -webkit-transform: scale(1, 0);
+    transform: scale(1, 0);
+  }
+
+  50% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+
+  62.5% {
+    -webkit-transform: scale(1, 0);
+    transform: scale(1, 0);
+  }
+
+  100% {
+    -webkit-transform: scale(1, 0);
+    transform: scale(1, 0);
+  }
+}
+
+@keyframes bar-left {
+  0% {
+    -webkit-transform: scale(1, 0);
+    transform: scale(1, 0);
+  }
+
+  37.5% {
+    -webkit-transform: scale(1, 0);
+    transform: scale(1, 0);
+  }
+
+  50% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+
+  62.5% {
+    -webkit-transform: scale(1, 0);
+    transform: scale(1, 0);
+  }
+
+  100% {
+    -webkit-transform: scale(1, 0);
+    transform: scale(1, 0);
+  }
+}
+
+/* Opacitychange -------------------- */
+
+@-webkit-keyframes opacitychange {
+
+  0%,
+  100% {
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  }
+
+  60% {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  }
+}
+
+@keyframes opacitychange {
+
+  0%,
+  100% {
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  }
+
+  60% {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  }
+}
+
+/* responsive */
+@media (max-width: 991.98px) {
+
+  /*Step*/
+
+}
+
+/* -----------------------------------------------------------------
+    -  Department
+----------------------------------------------------------------- */
+
+@-webkit-keyframes applications-arrow {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-60px);
+    transform: translateX(-60px);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+  }
+}
+
+@keyframes applications-arrow {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-60px);
+    transform: translateX(-60px);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+  }
+}
+
+@-webkit-keyframes applications-arrow-back {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(60px);
+    transform: translateX(60px);
+  }
+}
+
+@keyframes applications-arrow-back {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(60px);
+    transform: translateX(60px);
+  }
+}
+
+/*------------------------------------------------------------------------------
+  - Blog Page
+------------------------------------------------------------------------------*/
+
+/* Masonry Post ---------- */
+
+/* Thumb Post ----------------- */
+.thumb-post .entry-content {
+  height: 220px;
+}
+
+.thumb-post .entry-content .entry-img {
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.thumb-post .entry-content .entry-content-caption {
+  opacity: 0;
+  pointer-events: none;
+  background-color: var(--blog-post-bg-color);
+  -webkit-transition: opacity .2s ease-in-out;
+  -o-transition: opacity .2s ease-in-out;
+  transition: opacity .2s ease-in-out;
+}
+
+.thumb-post .entry-content:hover .entry-content-caption {
+  opacity: 1;
+}
+
+/* Masonry Carousel ------------ */
+
+/* Grid Post ------------------ */
+
+/* News List --------------------- */
+
+/* Authar Info --------------------- */
+
+/* Category List --------------------- */
+
+/*------------------------------------------------------------------------------
+  - Blog Details
+------------------------------------------------------------------------------*/
+
+/*Details Post share icon*/
+
+/* DROP CAP ------- */
+
+/* -----------------------------------------------------------------
+    -  Contact page
+----------------------------------------------------------------- */
+#map {
+  width: 100%;
+  height: 350px;
+}
+
+/*------------------------------------------------------------------------------
+  - Sign up & log in
+------------------------------------------------------------------------------*/
+
+/* -----------------------------------------------------------------
+    -  Hospital list Page
+----------------------------------------------------------------- */
+
+@media(min-width: 576px) {
+  .h-list__img {
+    width: 260px;
+  }
+}
+
+.h-list__img img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover
+}
+
+/* Search Form ------ */
+
+/* .btn-offcanvas__search,
+.btn-offcanvas__filters {
+  height: 40px;
+  width: 40px;
+} */
+
+/* .search-input__content .form-select,
+.search-input__content .has-icon .form-control, */
+
+/* Offcanvas ---------- */
+
+.offcanvas-filters {
+  top: 0;
+  right: -350px;
+  bottom: 0;
+  width: 350px;
+  height: 100%;
+  position: fixed;
+  background-color: #fff;
+  padding: 65px 30px 30px 30px;
+  z-index: 999 !important;
+  -webkit-transition: all .5s cubic-bezier(.77, 0, .175, 1);
+  -o-transition: all .5s cubic-bezier(.77, 0, .175, 1);
+  transition: all .5s cubic-bezier(.77, 0, .175, 1);
+  overflow-y: auto;
+}
+
+@media (max-width: 575px) {
+
+  
+  .offcanvas-filters {
+    width: 100%;
+    right: -100%;
+    padding: 45px 30px 30px 30px;
+  }
+}
+
+
+.offcanvas-filters.show {
+  right: 0;
+  -webkit-box-shadow: 1px 0 5px 0 rgba(50, 50, 50, .55);
+  box-shadow: 1px 0 5px 0 rgba(50, 50, 50, .55);
+}
+
+.offcanvas-close {
+  height: 50px;
+  width: 50px;
+}
+
+@media(min-width: 992px) {
+
+  
+  .offcanvas-filters {
+    display: none;
+  }
+}
+
+.card-hover img {
+  -webkit-transition: all .3s ease-out;
+  -o-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+}
+
+.card-hover:hover img {
+  -webkit-transition-duration: .1s;
+  -o-transition-duration: .1s;
+  transition-duration: .1s;
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+  opacity: .4;
+}
+
+/* -----------------------------------------------------------------
+    -  Hospital details
+----------------------------------------------------------------- */
+.h-email {
+  font-size: 24px;
+}
+
+@media(min-width: 576px) {
+  .h-email {
+    font-size: 38px;
+  }
+}
+
+/* -----------------------------------------------------------------
+    -  Donation Page
+----------------------------------------------------------------- */
+
+/* -----------------------------------------------------------------
+    -  Offline Payment
+----------------------------------------------------------------- */
+
+/* -----------------------------------------------------------------
+    - Empty Cart
+----------------------------------------------------------------- */
+
+@-webkit-keyframes plopp {
+  0% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  }
+
+  100% {
+    -webkit-transform: translate(0, -10px);
+    transform: translate(0, -10px);
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  }
+}
+
+@keyframes plopp {
+  0% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  }
+
+  100% {
+    -webkit-transform: translate(0, -10px);
+    transform: translate(0, -10px);
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  }
+}
+
+/* -----------------------------------------------------------------
+    -  Hospital List With Map
+----------------------------------------------------------------- */
+
+.directions-link {
+  padding: 7px 12px;
+  margin-bottom: 0.25rem;
+}
+
+.directions-link:hover {
+  color: #fff;
+  background-color: var(--bs-primary) !important;
+  border-color: var(--bs-primary) !important;
+}
+
+/* -----------------------------------------------------------------
+    -  To Top
+----------------------------------------------------------------- */
+
+/*------------------------------------------------------------------------------
+  - Registration Page
+------------------------------------------------------------------------------*/
+/* Home Button ---------- */
+
+
+
+
+
+/*------------------------------------------------------------------------------
+  - Counter Content
+------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------
+  - Topbar
+------------------------------------------------------------------------------*/
+
+
+/*------------------------------------------------------------------------------
+  - Page Title
+------------------------------------------------------------------------------*/

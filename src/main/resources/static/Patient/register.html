@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>i-res | 帳戶註冊</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="static/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="static/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="static/css/flaticon.css" />
+    <link href="static/css/css.css" rel="stylesheet" />
+    <link rel="stylesheet" href="static/css/style.css" />
+    <link rel="icon" href="static/img/favi.png" title="Favicon" sizes="32x32" />
+  </head>
+
+  <body>
+    <div id="preloader" class="preloader">
+      <div class="inner">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </div>
+    <section class="fxt-template-animation fxt-template-layout21">
+      <!-- Animation Start Here -->
+      <div id="particles-js"></div>
+      <!-- Animation End Here -->
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-xl-10 col-lg-10 col-sm-12 col-12 fxt-bg-color">
+            <div class="fxt-content">
+              <div class="fxt-header">
+                <a href="index.html" class="fxt-logo"
+                  ><img src="static/picture/logo-11.png" alt="Logo"
+                /></a>
+                <p>註冊以創建帳戶</p>
+              </div>
+              <div class="fxt-form">
+                <form method="POST" id="register" enctype="multipart/form-data">
+                  <div class="row">
+                    <div class="form-group col-md-6">
+                      <div class="fxt-transformY-50 fxt-transition-delay-1">
+                        <label for="name">真實姓名</label>
+                        <input
+                          type="text"
+                          id="register_name"
+                          class="form-control"
+                          name="name"
+                          required="required"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <div class="fxt-transformY-50 fxt-transition-delay-1">
+                        <label for="phone">手機電話</label>
+                        <input
+                          type="phone"
+                          id="register_phone"
+                          class="form-control"
+                          name="phone"
+                          required="required"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-md-6">
+                      <div class="fxt-transformY-50 fxt-transition-delay-1">
+                        <label for="email">Email</label>
+                        <input
+                          type="email"
+                          id="register_email"
+                          class="form-control"
+                          name="email"
+                          required="required"
+                        />
+                      </div>
+                    </div>
+                    <!-- <div class="form-group col-md-6">
+                      <div class="fxt-transformY-50 fxt-transition-delay-4">
+                        <label for="captcha">驗證碼</label>
+                        <input
+                          type="text"
+                          id="register_captcha"
+                          class="form-control"
+                          name="captcha"
+                          required="required"
+                        />
+                      </div>
+                    </div> -->
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-md-6">
+                      <div class="fxt-transformY-50 fxt-transition-delay-2">
+                        <label for="password">密碼</label>
+                        <input
+                          id="register_password"
+                          type="password"
+                          class="form-control"
+                          name="password"
+                          required="required"
+                        />
+                        <i
+                          toggle="#register_password"
+                          class="fa fa-fw fa-eye toggle-password field-icon"
+                        ></i>
+                      </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <div class="fxt-transformY-50 fxt-transition-delay-2">
+                        <label for="cPassword">密碼確認</label>
+                        <input
+                          id="register_cPassword"
+                          type="password"
+                          class="form-control"
+                          name="cPassword"
+                          required="required"
+                        />
+                        <i
+                          toggle="#register_cPassword"
+                          class="fa fa-fw fa-eye toggle-password field-icon"
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-md-6">
+                      <div class="fxt-transformY-50 fxt-transition-delay-3">
+                        <label for="birthdate">出生日期</label>
+                        <input
+                          type="date"
+                          id="register_birthdate"
+                          class="form-control"
+                          name="birthdate"
+                          required="required"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <div class="fxt-transformY-50 fxt-transition-delay-1">
+                        <label for="gender">性別</label>
+                        <select
+                          id="register_gender"
+                          class="form-control"
+                          name="gender"
+                          required
+                        >
+                          <option value="">選擇性別</option>
+                          <option value="1">男</option>
+                          <option value="2">女</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-md-6">
+                      <div class="fxt-transformY-50 fxt-transition-delay-1">
+                        <label for="address">地址</label>
+                        <input
+                          type="text"
+                          id="register_address"
+                          class="form-control"
+                          name="address"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <div class="fxt-transformY-50 fxt-transition-delay-1">
+                        <label for="emergency_name">緊急聯絡人姓名</label>
+                        <input
+                          type="text"
+                          id="register_emergency_name"
+                          class="form-control"
+                          name="emergencyName"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-md-6">
+                      <div class="fxt-transformY-50 fxt-transition-delay-1">
+                        <label for="emergency_content">緊急聯絡人電話</label>
+                        <input
+                          type="text"
+                          id="register_emergency_content"
+                          class="form-control"
+                          name="emergencyContent"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <div class="fxt-transformY-50 fxt-transition-delay-1">
+                        <label for="relation">關係</label>
+                        <select
+                          id="register_relation"
+                          class="form-control"
+                          name="relation"
+                        >
+                          <option value="0">選擇關係</option>
+                          <option value="1">配偶</option>
+                          <option value="2">父母</option>
+                          <option value="3">子女</option>
+                          <option value="4">祖父母</option>
+                          <option value="5">孫子女</option>
+                          <option value="6">外祖父母</option>
+                          <option value="7">外孫子女</option>
+                          <option value="8">曾祖父母</option>
+                          <option value="9">外曾祖父母</option>
+                          <option value="10">兄弟</option>
+                          <option value="11">姐妹</option>
+                          <option value="12">外甥</option>
+                          <option value="13">侄子</option>
+                          <option value="14">其他親屬</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-md-6">
+                      <div class="fxt-transformY-50 fxt-transition-delay-1">
+                        <label for="blood_type">血型</label>
+                        <select
+                          id="register_blood_type"
+                          class="form-control"
+                          name="bloodType"
+                        >
+                          <option value="0">血型</option>
+                          <option value="1">A型</option>
+                          <option value="2">B型</option>
+                          <option value="3">AB型</option>
+                          <option value="4">O型</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="fxt-transformY-50 fxt-transition-delay-1">
+                      <label for="notes">備註</label>
+                      <textarea
+                        id="register_notes"
+                        class="form-control"
+                        name="notes"
+                      ></textarea>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="fxt-transformY-50 fxt-transition-delay-1">
+                      <label for="profile_picture">大頭照</label>
+                      <input
+                        type="file"
+                        id="register_profile_picture"
+                        class="form-control"
+                        name="profilePicture"
+                        accept="image/*"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="fxt-transformY-50 fxt-transition-delay-4">
+                      <button type="submit" class="fxt-btn-fill">註冊</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <!-- <div class="fxt-style-line">
+                <div class="fxt-transformY-50 fxt-transition-delay-5">
+                  <h3>使用以下方法登入</h3>
+                </div>
+              </div>
+              <ul class="fxt-socials">
+                <li class="fxt-google">
+                  <div class="fxt-transformY-50 fxt-transition-delay-6">
+                    <a href="#" title="google"
+                      ><i class="fab fa-google-plus-g"></i
+                      ><span>Google +</span></a
+                    >
+                  </div>
+                </li>
+
+                <li class="fxt-facebook">
+                  <div class="fxt-transformY-50 fxt-transition-delay-8">
+                    <a href="#" title="Facebook"
+                      ><i class="fab fa-facebook-f"></i><span>Facebook</span></a
+                    >
+                  </div>
+                </li>
+              </ul> -->
+              <div class="fxt-footer">
+                <div class="fxt-transformY-50 fxt-transition-delay-9">
+                  <p>
+                    已經有帳戶了？<a
+                      href="login.html"
+                      class="switcher-text2 inline-text"
+                      >登入</a
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="static/js/jquery-3.7.1.min.js"></script>
+    <script src="static/js/bootstrap.bundle.min.js"></script>
+    <script src="static/js/imagesloaded.pkgd.min.js"></script>
+    <script src="static/js/particles.min.js"></script>
+    <script src="static/js/particles-1.js"></script>
+    <script src="static/js/validator.min.js"></script>
+    <script src="static/js/main.js"></script>
+  </body>
+</html>
