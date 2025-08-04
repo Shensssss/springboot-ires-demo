@@ -28,17 +28,18 @@
 ### 後端技術
 
 - Java 17
-- Spring Boot 
-- Spring MVC  
+- Spring Boot (含Spring MVC)
 - Hibernate / JPA  
 - MySQL  
 - Maven  
 - Apache Tomcat
+- RESTful API 設計
+- JSON（資料交換格式）
 
 ### 前端技術
 
 - HTML / CSS  
-- JavaScript / jQuery / AJAX  
+- JavaScript (含jQuery / AJAX)
 - Bootstrap
 
 ---
