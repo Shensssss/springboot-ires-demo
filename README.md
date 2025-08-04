@@ -68,8 +68,5 @@
 6. 瀏覽器開啟 http://localhost:8080/ires-system
 
 ## 備註
-專題報告影片：
-https://drive.google.com/drive/u/1/folders/1980PM41NFnV7tSbwP52AJT7txIZAgyrd
-
-專題報告簡報：
+專題報告簡報與影片：
 https://drive.google.com/drive/u/1/folders/1980PM41NFnV7tSbwP52AJT7txIZAgyrd
