@@ -55,10 +55,9 @@
 
 ### 2. 專案啟動步驟
 
-```bash
-# 1. 匯入專案（建議使用 Spring Tool Suite 4）
-# 2. 匯入資料庫結構與初始資料
-# 3. 修改 application.properties 內的資料庫連線資訊
-# 4. 確保 pom.xml 相依關係正常 (maven → update project)
-# 5. 啟動專案
-# 6. 瀏覽器開啟 http://localhost:8080/ires-system
+1. 匯入專案（建議使用 Spring Tool Suite 4）
+2. 匯入資料庫結構與初始資料
+3. 修改 application.properties 內的資料庫連線資訊
+4. 確保 pom.xml 相依關係正常 (maven → update project)
+5. 啟動專案
+6. 瀏覽器開啟 http://localhost:8080/ires-system
