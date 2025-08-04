@@ -11182,3 +11182,9 @@ org.hibernate.query.SemanticException: Could not interpret path expression 'emer
 2025-07-21 15:25:17.468 [INFO] [http-nio-8080-exec-2] [168] Initializing Spring DispatcherServlet 'dispatcherServlet'
 2025-07-21 15:25:17.468 [INFO] [http-nio-8080-exec-2] [532] Initializing Servlet 'dispatcherServlet'
 2025-07-21 15:25:17.469 [INFO] [http-nio-8080-exec-2] [554] Completed initialization in 1 ms
+2025-07-21 15:28:23.574 [INFO] [RMI TCP Connection(11)-127.0.0.1] [159] Application shutdown requested.
+2025-07-21 15:28:23.577 [INFO] [RMI TCP Connection(11)-127.0.0.1] [54] Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-21 15:28:23.593 [INFO] [tomcat-shutdown] [76] Graceful shutdown complete
+2025-07-21 15:28:23.599 [INFO] [RMI TCP Connection(11)-127.0.0.1] [660] Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-21 15:28:23.602 [INFO] [RMI TCP Connection(11)-127.0.0.1] [349] HikariPool-1 - Shutdown initiated...
+2025-07-21 15:28:23.609 [INFO] [RMI TCP Connection(11)-127.0.0.1] [351] HikariPool-1 - Shutdown completed.
